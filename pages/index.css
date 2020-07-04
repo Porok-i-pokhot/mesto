@@ -95,3 +95,21 @@
   padding: 0;
   align-self: center;
 }
+
+.elements {
+  max-width: 882px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-gap: 20px 18px;
+}
+
+.element {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.element__image {
+  border-radius: 10px 10px 0 0;
+
+}
