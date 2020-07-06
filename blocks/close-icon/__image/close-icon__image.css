@@ -1,0 +1,13 @@
+@media screen and (max-width: 485px) {
+  .close-icon__image {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .close-icon__image {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,23 @@
+@import url(./__logo/header__logo.css);
+
+.header {
+  max-width: 882px;
+  /* max-width: 68.906vw; */
+  margin: 45px auto 0;
+  font-family: 'Inter', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  min-height: 74px;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  color: #ffffff;
+  min-width: 300px;
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    min-height: 56px;
+    margin: 28px 0 0;
+    max-width: 100%;
+  }
+}

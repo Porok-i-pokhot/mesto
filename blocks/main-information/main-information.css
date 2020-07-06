@@ -1,0 +1,12 @@
+.main-information {
+  display: flex;
+  justify-content: space-between;
+  max-width: 336px;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1023px) {
+  .main-information {
+    margin-bottom: 14px;
+  }
+}

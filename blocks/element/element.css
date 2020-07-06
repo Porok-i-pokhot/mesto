@@ -1,0 +1,8 @@
+.element {
+  background-color: #ffffff;
+  overflow: hidden;
+  color: #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}

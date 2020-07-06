@@ -27,8 +27,6 @@ closePopupButton.addEventListener('click', togglePopup);
 savePopupButton.addEventListener('click', togglePopup);
 
 
-
-
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
