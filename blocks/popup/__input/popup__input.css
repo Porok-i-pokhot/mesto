@@ -1,9 +1,9 @@
-.form-input {
+.popup__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   min-height: 27.26px;
 }
 
-.form-input:first-child {
+.popup__input:first-child {
   margin-bottom: 29.74px;
 }

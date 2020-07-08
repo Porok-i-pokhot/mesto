@@ -1,21 +1,12 @@
 @import url(../vendor/normalize.css);
-@import url(../vendor/fonts/fonts.css);
+@import url(../vendor/fonts/Inter/inter.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/vector-image/vector-image.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/page/page.css);
-@import url(../blocks/occupation/occupation.css);
-@import url(../blocks/name/name.css);
-@import url(../blocks/main-information/main-information.css);
-@import url(../blocks/info/info.css);
 @import url(../blocks/header/header.css);
-@import url(../blocks/form-input/form-input.css);
-@import url(../blocks/form-button/form-button.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
-@import url(../blocks/edit-button/edit-button.css);
 @import url(../blocks/defocus/defocus.css);
-@import url(../blocks/close-icon/close-icon.css);
 
 @import url(../blocks/popup/_opened/popup_opened.css);

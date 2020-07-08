@@ -1,13 +1,13 @@
-const openPopupButton = document.querySelector('.edit-button');
+const openPopupButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
-const closePopupButton = document.querySelector('.close-icon');
-const savePopupButton = document.querySelector('.form-button');
+const closePopupButton = document.querySelector('.popup__close-icon');
+const savePopupButton = document.querySelector('.popup__form-button');
 
 let form = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.form-input_type_name');
-let occupationInput = document.querySelector('.form-input_type_occupation');
-let profileName = document.querySelector('.name');
-let profileOccupation = document.querySelector('.occupation');
+let nameInput = document.querySelector('.popup__input_type_name');
+let occupationInput = document.querySelector('.popup__input_type_occupation');
+let profileName = document.querySelector('.profile__name');
+let profileOccupation = document.querySelector('.profile__occupation');
 
 
 function togglePopup() {

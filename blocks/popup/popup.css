@@ -1,6 +1,10 @@
 @import url(./__container/popup__container.css);
 @import url(./__title/popup__title.css);
 @import url(./__form/popup__form.css);
+@import url(./__input/popup__input.css);
+@import url(./__form-button/popup__form-button.css);
+@import url(./__close-icon/popup__close-icon.css);
+@import url(./__close-icon-image/popup__close-icon-image.css);
 
 .popup {
   display: none;

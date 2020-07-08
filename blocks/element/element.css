@@ -1,3 +1,7 @@
+@import url(./__info/element__info.css);
+@import url(./__title/element__title.css);
+@import url(./__heart/element__heart.css);
+
 .element {
   background-color: #ffffff;
   overflow: hidden;

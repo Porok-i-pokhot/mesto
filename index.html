@@ -16,20 +16,6 @@
 
     <div class="page__container">
 
-        <div class="popup">
-          <div class="popup__container">
-            <div class="close-icon defocus">
-              <img src="./images/close-icon.svg" class="close-icon__image" alt="крестик">
-            </div>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" action="#" method="">
-              <input class="form-input form-input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Имя" name="name">
-              <input class="form-input form-input_type_occupation" type="text" value="Исследователь океана" placeholder="О себе" name="job">
-              <button type="submit" class="form-button defocus">Сохранить</button>
-            </form>
-          </div>
-        </div>
-
         <main class="content">
 
             <section class="profile">
@@ -37,17 +23,17 @@
               <div class="profile__container">
                 <img src="./images/avatar.jpeg" class="profile__avatar" alt="аватар">
                 <div class="profile__info">
-                  <div class="main-information">
-                    <h1 class="name">Жак-Ив Кусто</h1>
-                    <button class="edit-button defocus">
-                      <img src="./images/edit-button.svg" class="vector-image" alt="карандаш">
+                  <div class="profile__main-information">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button defocus" type="submit">
+                      <img src="./images/edit-button.svg" alt="карандаш">
                     </button>
                   </div>
-                  <p class="occupation">Исследователь океана</p>
+                  <p class="profile__occupation">Исследователь океана</p>
                 </div>
               </div>
-              <button class="profile__add-button defocus">
-                <img src="./images/add-button.svg" class="vector-image" alt="знак плюс">
+              <button class="profile__add-button defocus" type="submit">
+                <img src="./images/add-button.svg" class="profile__vector-image" alt="знак плюс">
               </button>
             </section>
 
@@ -55,44 +41,56 @@
 
               <div class="element">
                 <img src="./images/hersones.jpg" class="element__image" alt="Херсонес">
-                <div class="info">
-                  <h2 class="info__title">Херсонес</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">Херсонес</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
               <div class="element">
                 <img src="./images/nurgush.jpg" class="element__image" alt="Нургуш">
-                <div class="info">
-                  <h2 class="info__title">хребет Нургуш</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">хребет Нургуш</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
               <div class="element">
                 <img src="./images/olkhon.jpg" class="element__image" alt="Ольхон">
-                <div class="info">
-                  <h2 class="info__title">остров Ольхон</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">остров Ольхон</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
               <div class="element">
                 <img src="./images/onezhskoe.jpg" class="element__image" alt="Онежское озеро">
-                <div class="info">
-                  <h2 class="info__title">озеро Онежское</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">озеро Онежское</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
               <div class="element">
                 <img src="./images/saint-petersburg.jpg" class="element__image" alt="Санкт-Петербург">
-                <div class="info">
-                  <h2 class="info__title">Санкт-Петербург</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">Санкт-Петербург</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
               <div class="element">
                 <img src="./images/sochi.jpg" class="element__image" alt="Сочи">
-                <div class="info">
-                  <h2 class="info__title">Сочи</h2>
-                  <img src="./images/like.svg" class="heart" alt="сердце">
+                <div class="element__info">
+                  <h2 class="element__title">Сочи</h2>
+                  <button type="submit" class="element__heart">
+                    <img src="./images/like.svg" alt="сердце">
+                  </button>
                 </div>
               </div>
 
@@ -100,8 +98,25 @@
 
         </main>
 
-        <footer class="footer">&copy; 2020 Mesto Russia</footer>
+        <footer class="footer">
+          <p class="footer__text">&copy; 2020 Mesto Russia</p>
+        </footer>
+
+        <div class="popup">
+          <div class="popup__container">
+            <button class="popup__close-icon defocus" type="submit">
+              <img src="./images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
+            </button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" action="#" name="form">
+              <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Имя" name="name">
+              <input class="popup__input popup__input_type_occupation" type="text" value="Исследователь океана" placeholder="О себе" name="job">
+              <button type="submit" class="popup__form-button defocus">Сохранить</button>
+            </form>
+          </div>
+        </div>
+
     </div>
-    <script src="index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
