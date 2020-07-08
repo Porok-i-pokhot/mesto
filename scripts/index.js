@@ -1,7 +1,6 @@
 const openPopupButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const closePopupButton = document.querySelector('.popup__close-icon');
-const savePopupButton = document.querySelector('.popup__form-button');
 
 let form = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__input_type_name');
@@ -25,11 +24,9 @@ function formSubmitHandler(evt) {
   profileName.textContent = nameInput.value
   profileOccupation.textContent = occupationInput.value
 
+  togglePopup();
 }
 
 form.addEventListener('submit', formSubmitHandler);
-
-
 openPopupButton.addEventListener('click', togglePopup);
 closePopupButton.addEventListener('click', togglePopup);
-savePopupButton.addEventListener('click', togglePopup);
