@@ -11,10 +11,17 @@ const openAddCard = document.querySelector('.profile__add-button');
 const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
 const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
 
-// данные формы Редактирования профиля
-const form = editProfilePopup.querySelector('.popup__form');
+const editProfileForm = editProfilePopup.querySelector('.popup__form');
+const addCardForm = addCardPopup.querySelector('.popup__form');
+
+// inputs
 const nameInput = document.querySelector('.popup__input_type_name');
 const occupationInput = document.querySelector('.popup__input_type_occupation');
+
+const placeNameInput = document.querySelector('.popup__input_type_place');
+const linkInput = document.querySelector('.popup__input_type_link');
+
+// Profile Data
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
 
@@ -47,8 +54,19 @@ function formSubmitHandler(evt) {
   togglePopup(editProfilePopup);
 }
 
+function cardSubmitHandler(evt) {
+  evt.preventDefault();
+
+  renderCard({name: placeNameInput.value, link: linkInput.value})
+  // profileName.textContent = nameInput.value
+  // profileOccupation.textContent = occupationInput.value
+
+  togglePopup(addCardPopup);
+}
+
 // обработчики по submit
-form.addEventListener('submit', formSubmitHandler);
+editProfileForm.addEventListener('submit', formSubmitHandler);
+addCardForm.addEventListener('submit', cardSubmitHandler);
 
 // обработчики по click
 openEditProfile.addEventListener('click', () => {
@@ -94,17 +112,23 @@ const initialCards = [
 ];
 
 const cardTemplate = document.querySelector('.elements__template').content.querySelector('.element');
+const cards = document.querySelector('.elements');
 
-initialCards.forEach((cardData) => {
+// функция "лайка"
+function buttonLikeClick() {
+
+}
+
+function createCard (data) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardImage = cardElement.querySelector('.element__image');
   const cardTitle = cardElement.querySelector('.element__title');
-  const cardLike = cardElement.querySelector('.element__heart');
+  const cardLike = cardElement.querySelector('.element__like');
   const cardDelete = cardElement.querySelector('.element__delete');
 
-  cardLike.addEventListener('click', () => {
-    // buttonLikeClick();
+  cardLike.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('element__like_active');
   })
 
   cardDelete.addEventListener('click', () => {
@@ -115,15 +139,20 @@ initialCards.forEach((cardData) => {
     // buttonImageClick();
   })
 
-  cardTitle.textContent = cardData.name;
-  cardImage.style.backgroundImage = `url(${cardData.link})`;
+  cardTitle.textContent = data.name;
+  cardImage.style.backgroundImage = `url(${data.link})`;
 
-  const cards = document.querySelector('.elements');
-  cards.prepend(cardElement);
+  return cardElement;
+}
 
+
+function renderCard(data) {
+  cards.prepend(createCard(data));
+}
+
+initialCards.forEach((data) => {
+  renderCard(data);
 })
-
-
 
 
 
