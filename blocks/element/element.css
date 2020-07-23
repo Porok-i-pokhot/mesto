@@ -1,6 +1,7 @@
 @import url(./__info/element__info.css);
 @import url(./__title/element__title.css);
 @import url(./__heart/element__heart.css);
+@import url(./__image/element__image.css);
 
 .element {
   background-color: #ffffff;
@@ -9,4 +10,5 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  width: 282px;
 }

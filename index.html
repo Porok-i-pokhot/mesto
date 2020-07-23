@@ -39,61 +39,6 @@
 
             <section class="elements">
 
-              <div class="element">
-                <img src="./images/hersones.jpg" class="element__image" alt="Херсонес">
-                <div class="element__info">
-                  <h2 class="element__title">Херсонес</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-              <div class="element">
-                <img src="./images/nurgush.jpg" class="element__image" alt="Нургуш">
-                <div class="element__info">
-                  <h2 class="element__title">хребет Нургуш</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-              <div class="element">
-                <img src="./images/olkhon.jpg" class="element__image" alt="Ольхон">
-                <div class="element__info">
-                  <h2 class="element__title">остров Ольхон</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-              <div class="element">
-                <img src="./images/onezhskoe.jpg" class="element__image" alt="Онежское озеро">
-                <div class="element__info">
-                  <h2 class="element__title">озеро Онежское</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-              <div class="element">
-                <img src="./images/saint-petersburg.jpg" class="element__image" alt="Санкт-Петербург">
-                <div class="element__info">
-                  <h2 class="element__title">Санкт-Петербург</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-              <div class="element">
-                <img src="./images/sochi.jpg" class="element__image" alt="Сочи">
-                <div class="element__info">
-                  <h2 class="element__title">Сочи</h2>
-                  <button type="button" class="element__heart">
-                    <img src="./images/like.svg" alt="сердце">
-                  </button>
-                </div>
-              </div>
-
             </section>
 
         </main>
@@ -102,7 +47,7 @@
           <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <div class="popup popup_edit-profile">
           <div class="popup__container">
             <button class="popup__close-icon defocus" type="button">
               <img src="./images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
@@ -116,7 +61,35 @@
           </div>
         </div>
 
+        <div class="popup popup_add-card">
+          <div class="popup__container">
+            <button class="popup__close-icon defocus" type="button">
+              <img src="./images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
+            </button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form" action="#" name="form">
+              <input class="popup__input popup__input_type_place" type="text" value="Жак-Ив Кусто" placeholder="Название" name="name">
+              <input class="popup__input popup__input_type_link" type="text" value="Исследователь океана" placeholder="Ссылка на картинку" name="job">
+              <button type="submit" class="popup__form-button defocus">Сохранить</button>
+            </form>
+          </div>
+        </div>
+
     </div>
+
+    <template class="elements__template">
+      <div class="element">
+        <button class="element__delete"></button>
+        <div class="element__image"></div>
+        <div class="element__info">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__heart">
+            <img src="./images/like.svg" alt="сердце">
+          </button>
+        </div>
+      </div>
+    </template>
+
     <script src="./scripts/index.js"></script>
 </body>
 </html>
