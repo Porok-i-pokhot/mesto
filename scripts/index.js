@@ -2,17 +2,15 @@ const editProfilePopup = document.querySelector('.popup_edit-profile');
 const addCardPopup = document.querySelector('.popup_add-card');
 const imagePopup = document.querySelector('.popup_show-image');
 
-// находим элементы попапа с картинкой
 
 const imagePopupDataImg = imagePopup.querySelector('.popup__image');
 const imagePopupTitle = imagePopup.querySelector('.popup__title-img');
 
 
-// кнопки открытия попапов
 const openEditProfile = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
 
-// кнопки закрытия попапов
+
 const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
 const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
 const closeImageButton = imagePopup.querySelector('.popup__close-icon');
@@ -20,19 +18,20 @@ const closeImageButton = imagePopup.querySelector('.popup__close-icon');
 const editProfileForm = editProfilePopup.querySelector('.popup__form');
 const addCardForm = addCardPopup.querySelector('.popup__form');
 
-// inputs
+
 const nameInput = document.querySelector('.popup__input_type_name');
 const occupationInput = document.querySelector('.popup__input_type_occupation');
 
 const placeNameInput = document.querySelector('.popup__input_type_place');
 const linkInput = document.querySelector('.popup__input_type_link');
 
-// Profile Data
+
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
 
 const cardTemplate = document.querySelector('.elements__template').content.querySelector('.element');
 const cards = document.querySelector('.elements');
+
 
 const initialCards = [
   {
@@ -61,13 +60,16 @@ const initialCards = [
   }
 ];
 
-function togglePopup(data) {
-  data.classList.toggle('popup_opened');
 
+function assignInputValue(data) {
   if(data.classList.contains('popup_opened')) {
     nameInput.value = profileName.textContent
     occupationInput.value = profileOccupation.textContent
   };
+}
+
+function togglePopup(data) {
+  data.classList.toggle('popup_opened');
 }
 
 function formSubmitHandler(evt) {
@@ -130,14 +132,14 @@ initialCards.forEach((data) => {
   renderCard(data);
 })
 
-// обработчики по submit
+
 editProfileForm.addEventListener('submit', formSubmitHandler);
 addCardForm.addEventListener('submit', cardSubmitHandler);
 
-// обработчики по click
+
 openEditProfile.addEventListener('click', () => {
   togglePopup(editProfilePopup);
-
+  assignInputValue(editProfilePopup);
 });
 
 closeProfileButton.addEventListener('click', () => {
