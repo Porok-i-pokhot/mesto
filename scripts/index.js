@@ -1,6 +1,11 @@
 const editProfilePopup = document.querySelector('.popup_edit-profile');
 const addCardPopup = document.querySelector('.popup_add-card');
-// const addImagePopup = document.querySelector(',');
+const imagePopup = document.querySelector('.popup_show-image');
+
+// находим элементы попапа с картинкой
+
+const imagePopupDataImg = imagePopup.querySelector('.popup__image');
+const imagePopupTitle = imagePopup.querySelector('.popup__title-img');
 
 
 // кнопки открытия попапов
@@ -10,6 +15,7 @@ const openAddCard = document.querySelector('.profile__add-button');
 // кнопки закрытия попапов
 const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
 const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
+const closeImageButton = imagePopup.querySelector('.popup__close-icon-button');
 
 const editProfileForm = editProfilePopup.querySelector('.popup__form');
 const addCardForm = addCardPopup.querySelector('.popup__form');
@@ -26,15 +32,6 @@ const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
 
 
-
-// function togglePopupAddCard() {
-//   addCardPopup.classList.toggle('popup_opened');
-
-//   if(popup.classList.contains('popup_opened')) {
-//     nameInput.value = profileName.textContent
-//     occupationInput.value = profileOccupation.textContent
-//   };
-// }
 
 function togglePopup(editProfilePopup) {
   editProfilePopup.classList.toggle('popup_opened');
@@ -58,8 +55,6 @@ function cardSubmitHandler(evt) {
   evt.preventDefault();
 
   renderCard({name: placeNameInput.value, link: linkInput.value})
-  // profileName.textContent = nameInput.value
-  // profileOccupation.textContent = occupationInput.value
 
   togglePopup(addCardPopup);
 }
@@ -81,6 +76,10 @@ openAddCard.addEventListener('click', () => {
 });
 closeCardButton.addEventListener('click', () => {
   togglePopup(addCardPopup);
+});
+
+closeImageButton.addEventListener('click', () => {
+  togglePopup(imagePopup);
 });
 
 
@@ -114,10 +113,15 @@ const initialCards = [
 const cardTemplate = document.querySelector('.elements__template').content.querySelector('.element');
 const cards = document.querySelector('.elements');
 
-// функция "лайка"
-function buttonLikeClick() {
 
-}
+function buttonImageClick(data) {
+
+    imagePopupDataImg.src = data.link;
+    imagePopupDataImg.alt = data.name;
+    imagePopupTitle.textContent = data.name;
+
+};
+
 
 function createCard (data) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -131,12 +135,13 @@ function createCard (data) {
     evt.target.classList.toggle('element__like_active');
   })
 
-  cardDelete.addEventListener('click', () => {
-    // buttonDeleteClick();
+  cardDelete.addEventListener('click', (evt) => {
+    evt.target.closest('.element').remove();
   })
 
   cardImage.addEventListener('click', () => {
-    // buttonImageClick();
+    togglePopup(imagePopup);
+    buttonImageClick(data);
   })
 
   cardTitle.textContent = data.name;

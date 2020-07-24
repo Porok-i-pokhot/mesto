@@ -3,6 +3,7 @@
 @import url(./__like/element__like.css);
 @import url(./__image/element__image.css);
 @import url(./__like/_active/element__like_active.css);
+@import url(./__delete/element__delete.css);
 
 .element {
   background-color: #ffffff;
@@ -12,4 +13,5 @@
   display: flex;
   flex-direction: column;
   width: 282px;
+  position: relative;
 }

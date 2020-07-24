@@ -61,17 +61,29 @@
           </div>
         </div>
 
-        <div class="popup popup_add-card reset">
+        <div class="popup popup_add-card">
           <div class="popup__container">
             <button class="popup__close-icon defocus" type="button">
               <img src="./images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
             </button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" action="#" name="form">
-              <input class="popup__input popup__input_type_place" type="text" value="Жак-Ив Кусто" placeholder="Название" name="name">
-              <input class="popup__input popup__input_type_link" type="text" value="Исследователь океана" placeholder="Ссылка на картинку" name="job">
+              <input class="popup__input popup__input_type_place" type="text" placeholder="Название" name="place">
+              <input class="popup__input popup__input_type_link" type="text"  placeholder="Ссылка на картинку" name="link">
               <button type="submit" class="popup__form-button defocus">Сохранить</button>
             </form>
+          </div>
+        </div>
+
+        <div class="popup popup_show-image">
+          <div class="popup__container-img">
+            <button class="popup__close-icon-button defocus" type="button">
+              <img src="./images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
+            </button>
+            <figure>
+              <img class="popup__image" src="" alt="">
+              <figcaption class="popup__title-img"></figcaption>
+          </figure>
           </div>
         </div>
 
@@ -79,7 +91,7 @@
 
     <template class="elements__template">
       <div class="element">
-        <button class="element__delete"></button>
+        <button class="element__delete defocus"></button>
         <div class="element__image"></div>
         <div class="element__info">
           <h2 class="element__title"></h2>
