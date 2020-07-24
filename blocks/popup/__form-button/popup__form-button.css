@@ -16,3 +16,10 @@
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
+
+@media screen and (max-width: 320px){
+  .popup__form-button {
+    font-size: 14px;
+    
+  }
+}

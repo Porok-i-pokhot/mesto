@@ -7,3 +7,10 @@
 .popup__input:first-child {
   margin-bottom: 29.74px;
 }
+
+@media screen and (max-width: 320px) {
+  .popup__input {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
