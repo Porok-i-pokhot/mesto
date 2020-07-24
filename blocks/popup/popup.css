@@ -7,14 +7,14 @@
 @import url(./__close-icon-image/popup__close-icon-image.css);
 @import url(./__title-img/popup__title-img.css);
 @import url(./__container-img/popup__container-img.css);
-@import url(./__close-icon-button/popup__close-icon-button.css);
 @import url(./__image/popup__image.css);
+@import url(./__shell-image/popup__shell-image.css);
 
 .popup {
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0.5s, opacity 0.5s linear;
   position: fixed;
   top: 0;
   left: 0;

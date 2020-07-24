@@ -15,7 +15,7 @@ const openAddCard = document.querySelector('.profile__add-button');
 // кнопки закрытия попапов
 const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
 const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
-const closeImageButton = imagePopup.querySelector('.popup__close-icon-button');
+const closeImageButton = imagePopup.querySelector('.popup__close-icon');
 
 const editProfileForm = editProfilePopup.querySelector('.popup__form');
 const addCardForm = addCardPopup.querySelector('.popup__form');
@@ -154,5 +154,4 @@ closeCardButton.addEventListener('click', () => {
 
 closeImageButton.addEventListener('click', () => {
   togglePopup(imagePopup);
-
 });
