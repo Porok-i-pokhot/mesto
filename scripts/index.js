@@ -68,6 +68,10 @@ function assignInputValue(data) {
   };
 }
 
+function resetInputValue(data) {
+  data.querySelector('form').reset()
+}
+
 function togglePopup(data) {
   data.classList.toggle('popup_opened');
 }
@@ -148,6 +152,7 @@ closeProfileButton.addEventListener('click', () => {
 
 openAddCard.addEventListener('click', () => {
   togglePopup(addCardPopup);
+  resetInputValue(addCardPopup);
 });
 closeCardButton.addEventListener('click', () => {
   togglePopup(addCardPopup);
