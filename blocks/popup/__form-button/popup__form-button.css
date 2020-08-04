@@ -1,3 +1,5 @@
+@import url(./_disabled/popup__form-button_disabled.css);
+
 .popup__form-button {
   margin-top: 48px;
   font-size: 18px;
@@ -20,6 +22,6 @@
 @media screen and (max-width: 320px){
   .popup__form-button {
     font-size: 14px;
-    
+
   }
 }

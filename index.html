@@ -54,9 +54,9 @@
             </button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" action="#" name="form" novalidate>
-              <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Имя" name="name" id="input" required minlength="2" maxlength="40">
+              <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Имя" name="name" id="input" required minlength="2" maxlength="40" autocomplete="off">
               <span class='popup__input-error' id='input-error'></span>
-              <input class="popup__input popup__input_type_occupation" type="text" value="Исследователь океана" placeholder="О себе" name="job" id="input" required minlength="2" maxlength="200">
+              <input class="popup__input popup__input_type_occupation" type="text" value="Исследователь океана" placeholder="О себе" name="job" id="input" required minlength="2" maxlength="200" autocomplete="off">
               <span class='popup__input-error' id='input-error'></span>
               <button type="submit" class="popup__form-button popup__form-button_disabled defocus" disabled>Сохранить</button>
             </form>
@@ -70,9 +70,9 @@
             </button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" action="#" name="form" novalidate>
-              <input class="popup__input popup__input_type_place" type="text" placeholder="Название" name="place" id="input" required minlength="1" maxlength="30">
+              <input class="popup__input popup__input_type_place" type="text" placeholder="Название" name="place" id="input" required minlength="1" maxlength="30" autocomplete="off">
               <span class='popup__input-error' id='input-error'></span>
-              <input class="popup__input popup__input_type_link" type="url"  placeholder="Ссылка на картинку" name="link" id="input" required>
+              <input class="popup__input popup__input_type_link" type="url"  placeholder="Ссылка на картинку" name="link" id="input" required autocomplete="off">
               <span class='popup__input-error' id='input-error'></span>
               <button type="submit" class="popup__form-button popup__form-button_disabled defocus" disabled>Сохранить</button>
             </form>
