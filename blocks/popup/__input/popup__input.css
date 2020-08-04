@@ -1,13 +1,13 @@
-@import url(./_type/popup__input_type_error.css);
 
 .popup__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   min-height: 27.26px;
+  margin: 30px 0 0 0;
 }
 
 .popup__input:first-child {
-  margin-bottom: 29.74px;
+  margin: 0;
 }
 
 @media screen and (max-width: 320px) {
