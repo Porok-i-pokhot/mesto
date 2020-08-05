@@ -186,7 +186,10 @@ document.addEventListener('keydown', (evt) => {
 });
 
 popupList.forEach(function(popup){
-  popup.addEventListener('click', () => {
-    closePopup(popup);
-  })
+  popup.addEventListener('click', (evt) => {
+    const isPopup = evt.target.classList.contains('popup');
+    if(isPopup) {
+      closePopup(popup);
+    }
+  });
 })

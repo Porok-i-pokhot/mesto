@@ -36,21 +36,21 @@ const checkInputValidity = (formElement, inputElement, settings) => {
 };
 
 const isFormValid = (inputs) => {
-  return inputs.some((inputElement) => {
-    return !inputElement.validity.valid;
+  return inputs.every((inputElement) => {
+    return inputElement.validity.valid;
   });
 };
 
-function setSubmitButtonState(isFormValid, settings, form) {
+
+function setSubmitButtonState(inputs, settings, form) {
   const buttonElement = form.querySelector(settings.submitButtonSelector);
 
-  if(isFormValid) {
+  if(isFormValid(inputs)) {
     buttonElement.disabled = false;
-    buttonElement.classList.add(settings.inactiveButtonClass);
-
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   } else {
     buttonElement.disabled = true;
-    buttonElement.classList.remove(settings.inactiveButtonClass);
+    buttonElement.classList.add(settings.inactiveButtonClass);
   }
 }
 
@@ -62,7 +62,7 @@ const setEventListeners = (formElement, settings) => {
   inputs.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, settings);
-      setSubmitButtonState(isFormValid, settings, formElement);
+      setSubmitButtonState(inputs, settings, formElement);
     });
   });
 };
