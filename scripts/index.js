@@ -72,6 +72,9 @@ function assignInputValue(data) {
 }
 
 function resetInputValue(data) {
+  const inactiveButton = data.querySelector('.popup__form-button');
+  inactiveButton.disabled = true;
+  inactiveButton.classList.add('popup__form-button_disabled');
   data.querySelector('form').reset()
 }
 
