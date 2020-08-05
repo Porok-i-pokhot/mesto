@@ -1,4 +1,4 @@
-const showInputError = (formElement, inputElement, settings) => {
+function showInputError(formElement, inputElement, settings) {
   const selector = `#${inputElement.name}-error`;
   const errorElement = formElement.querySelector(selector);
   inputElement.classList.add(settings.inputErrorClass);
@@ -6,7 +6,7 @@ const showInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = inputElement.validationMessage;
 }
 
-const hideInputError = (formElement, inputElement, settings) => {
+function hideInputError(formElement, inputElement, settings) {
   const selector = `#${inputElement.name}-error`;
 
   const errorElement = formElement.querySelector(selector);
@@ -27,7 +27,7 @@ function hideAllErrors(formElement, settings) {
     })
 }
 
-const checkInputValidity = (formElement, inputElement, settings) => {
+function checkInputValidity(formElement, inputElement, settings) {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, settings);
   } else {
@@ -35,7 +35,7 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   }
 };
 
-const isFormValid = (inputs) => {
+function isFormValid(inputs) {
   return inputs.every((inputElement) => {
     return inputElement.validity.valid;
   });
@@ -55,7 +55,7 @@ function setSubmitButtonState(inputs, settings, form) {
 }
 
 
-const setEventListeners = (formElement, settings) => {
+function setEventListeners(formElement, settings) {
   const inputs = Array.from(formElement.querySelectorAll(settings.inputSelector));
 
 
