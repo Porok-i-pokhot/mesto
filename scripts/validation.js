@@ -5,6 +5,7 @@ const showInputError = (formElement, inputElement, settings) => {
   errorElement.classList.add(settings.errorClass);
   errorElement.textContent = inputElement.validationMessage;
 }
+
 const hideInputError = (formElement, inputElement, settings) => {
   const selector = `#${inputElement.name}-error`;
 
@@ -13,6 +14,18 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
 };
+
+function hideAllErrors(formElement, settings) {
+    const foundErrorList = formElement.querySelectorAll(settings.inputErrorClass);
+    foundErrorList.forEach(function(item){
+      item.classList.remove(settings.inputErrorClass);
+    });
+    const errorElement = formElement.querySelectorAll(settings.errorClass);
+    errorElement.forEach(function(item){
+      item.classList.remove(settings.errorClass);
+      item.textContent = '';
+    })
+}
 
 const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
@@ -63,6 +76,10 @@ function enableValidation(settings) {
     formElement.addEventListener('submit', function(evt) {
       evt.preventDefault();
     });
+
+    formElement.addEventListener('reset', function(evt){
+      hideAllErrors(formElement, settings);
+    })
   });
 };
 

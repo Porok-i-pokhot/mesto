@@ -158,8 +158,10 @@ closeProfileButton.addEventListener('click', () => {
   closePopup(editProfilePopup);
 });
 
-document.addEventListener('keydown', () => {
-  closePopup(editProfilePopup);
+document.addEventListener('keydown', (evt) => {
+  if(evt.key === "Escape") {
+    closePopup(editProfilePopup);
+  };
 });
 
 openAddCard.addEventListener('click', () => {
@@ -171,14 +173,19 @@ closeCardButton.addEventListener('click', () => {
   closePopup(addCardPopup);
 });
 
-document.addEventListener('keydown', () => {
-  closePopup(addCardPopup);
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === "Escape") {
+      closePopup(addCardPopup);
+    };
 });
 
 closeImageButton.addEventListener('click', () => {
   closePopup(imagePopup);
 });
 
-document.addEventListener('keydown', () => {
-  closePopup(imagePopup);
+document.addEventListener('keydown', (evt) => {
+  if(evt.key === "Escape") {
+    closePopup(imagePopup);
+  };
 });
+
