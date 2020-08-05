@@ -61,6 +61,9 @@ const initialCards = [
 ];
 
 
+let handler;
+
+
 function assignInputValue(data) {
   if(data.classList.contains('popup_opened')) {
     nameInput.value = profileName.textContent
@@ -72,12 +75,23 @@ function resetInputValue(data) {
   data.querySelector('form').reset()
 }
 
+function handleEsc(data){
+  handler = (evt) => {
+    if(evt.key === "Escape") {
+      closePopup(data);
+    };
+  };
+  document.addEventListener('keydown', handler);
+}
+
 function openPopup(data) {
+  handleEsc(data);
   data.classList.add('popup_opened');
 }
 
 function closePopup(data) {
   data.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handler);
 }
 
 function formSubmitHandler(evt) {
@@ -97,7 +111,7 @@ function cardSubmitHandler(evt) {
   closePopup(addCardPopup);
 }
 
-function buttonImageClick(data) {
+function handleImageClick(data) {
 
   imagePopupDataImg.src = data.link;
   imagePopupDataImg.alt = data.name;
@@ -123,7 +137,7 @@ function createCard (data) {
 
   cardImage.addEventListener('click', () => {
     openPopup(imagePopup);
-    buttonImageClick(data);
+    handleImageClick(data);
   })
 
   cardTitle.textContent = data.name;
@@ -154,12 +168,6 @@ closeProfileButton.addEventListener('click', () => {
   closePopup(editProfilePopup);
 });
 
-document.addEventListener('keydown', (evt) => {
-  if(evt.key === "Escape") {
-    closePopup(editProfilePopup);
-  };
-});
-
 openAddCard.addEventListener('click', () => {
   openPopup(addCardPopup);
   resetInputValue(addCardPopup);
@@ -169,20 +177,8 @@ closeCardButton.addEventListener('click', () => {
   closePopup(addCardPopup);
 });
 
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === "Escape") {
-      closePopup(addCardPopup);
-    };
-});
-
 closeImageButton.addEventListener('click', () => {
   closePopup(imagePopup);
-});
-
-document.addEventListener('keydown', (evt) => {
-  if(evt.key === "Escape") {
-    closePopup(imagePopup);
-  };
 });
 
 popupList.forEach(function(popup){
