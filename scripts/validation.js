@@ -16,11 +16,11 @@ const hideInputError = (formElement, inputElement, settings) => {
 };
 
 function hideAllErrors(formElement, settings) {
-    const foundErrorList = formElement.querySelectorAll(settings.inputErrorClass);
+    const foundErrorList = formElement.querySelectorAll(`.${settings.inputErrorClass}`);
     foundErrorList.forEach(function(item){
       item.classList.remove(settings.inputErrorClass);
     });
-    const errorElement = formElement.querySelectorAll(settings.errorClass);
+    const errorElement = formElement.querySelectorAll(`.${settings.errorClass}`);
     errorElement.forEach(function(item){
       item.classList.remove(settings.errorClass);
       item.textContent = '';
