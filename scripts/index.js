@@ -72,9 +72,17 @@ function resetInputValue(data) {
   data.querySelector('form').reset()
 }
 
-function togglePopup(data) {
-  data.classList.toggle('popup_opened');
+function openPopup(data) {
+  data.classList.add('popup_opened');
 }
+
+function closePopup(data) {
+  data.classList.remove('popup_opened');
+}
+
+// function togglePopup(data) {
+//   data.classList.toggle('popup_opened');
+// }
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -82,7 +90,7 @@ function formSubmitHandler(evt) {
   profileName.textContent = nameInput.value
   profileOccupation.textContent = occupationInput.value
 
-  togglePopup(editProfilePopup);
+  closePopup(editProfilePopup);
 }
 
 function cardSubmitHandler(evt) {
@@ -90,7 +98,7 @@ function cardSubmitHandler(evt) {
 
   renderCard({name: placeNameInput.value, link: linkInput.value})
 
-  togglePopup(addCardPopup);
+  closePopup(addCardPopup);
 }
 
 function buttonImageClick(data) {
@@ -118,7 +126,7 @@ function createCard (data) {
   })
 
   cardImage.addEventListener('click', () => {
-    togglePopup(imagePopup);
+    openPopup(imagePopup);
     buttonImageClick(data);
   })
 
@@ -142,23 +150,35 @@ addCardForm.addEventListener('submit', cardSubmitHandler);
 
 
 openEditProfile.addEventListener('click', () => {
-  togglePopup(editProfilePopup);
+  openPopup(editProfilePopup);
   assignInputValue(editProfilePopup);
 });
 
 closeProfileButton.addEventListener('click', () => {
-  togglePopup(editProfilePopup);
+  closePopup(editProfilePopup);
+});
+
+document.addEventListener('keydown', () => {
+  closePopup(editProfilePopup);
 });
 
 openAddCard.addEventListener('click', () => {
-  togglePopup(addCardPopup);
+  openPopup(addCardPopup);
   resetInputValue(addCardPopup);
 });
-closeCardButton.addEventListener('click', () => {
-  togglePopup(addCardPopup);
 
+closeCardButton.addEventListener('click', () => {
+  closePopup(addCardPopup);
+});
+
+document.addEventListener('keydown', () => {
+  closePopup(addCardPopup);
 });
 
 closeImageButton.addEventListener('click', () => {
-  togglePopup(imagePopup);
+  closePopup(imagePopup);
+});
+
+document.addEventListener('keydown', () => {
+  closePopup(imagePopup);
 });

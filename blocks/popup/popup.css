@@ -11,6 +11,7 @@
 @import url(./__shell-image/popup__shell-image.css);
 @import url(./input-error/popup__input-error.css);
 @import url(./__input/_type/popup__input_type_error.css);
+@import url(./__form-button/_disabled/popup__form-button_disabled.css);
 
 .popup {
   display: flex;

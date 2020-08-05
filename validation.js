@@ -29,14 +29,15 @@ const isFormValid = (inputs) => {
 };
 
 function setSubmitButtonState(isFormValid, settings, form) {
-  if(isFormValid) {
-    const buttonElement = form.querySelector(settings.submitButtonSelector);
+  const buttonElement = form.querySelector(settings.submitButtonSelector);
 
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(settings.inactiveButtonClass);
-  } else {
-    buttonElement.setAttribute('disabled', true);
+  if(isFormValid) {
+    buttonElement.disabled = false;
     buttonElement.classList.add(settings.inactiveButtonClass);
+
+  } else {
+    buttonElement.disabled = true;
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 }
 

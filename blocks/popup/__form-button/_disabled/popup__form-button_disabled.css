@@ -1,17 +1,8 @@
 .popup__form-button_disabled {
-  /* margin-top: 48px; */
-  /* font-size: 18px; */
-  /* font-weight: 400; */
-  /* line-height: 1.2; */
-  /* text-align: center; */
-  /* min-height: 50.15px; */
   background: #ffffff;
   border-radius: 2px;
-  color: #000000;
+  color: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0;
 }
 
-/* .popup__form-button_disabled:hover {
-  cursor: none;
-} */
