@@ -15,6 +15,7 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = '';
 };
 
+debugger;
 function hideAllErrors(formElement, settings) {
     const foundErrorList = formElement.querySelectorAll(settings.inputErrorClass);
     foundErrorList.forEach(function(item){
@@ -77,7 +78,7 @@ function enableValidation(settings) {
       evt.preventDefault();
     });
 
-    formElement.addEventListener('reset', function(evt){
+    formElement.addEventListener('reset', function(){
       hideAllErrors(formElement, settings);
     })
   });

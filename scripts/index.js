@@ -179,8 +179,10 @@ document.addEventListener('keydown', (evt) => {
     };
 });
 
-closeImageButton.addEventListener('click', () => {
-  closePopup(imagePopup);
+closeImageButton.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup')){
+    closePopup(imagePopup);
+}
 });
 
 document.addEventListener('keydown', (evt) => {
