@@ -15,7 +15,6 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = '';
 };
 
-debugger;
 function hideAllErrors(formElement, settings) {
     const foundErrorList = formElement.querySelectorAll(settings.inputErrorClass);
     foundErrorList.forEach(function(item){
