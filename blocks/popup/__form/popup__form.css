@@ -1,17 +1,5 @@
 .popup__form {
   display: flex;
   flex-direction: column;
-  width: 358px;
-}
-
-@media screen and (max-width: 560px) {
-  .popup__form {
-    width: 300px;
-  }
-}
-
-@media screen and (max-width: 485px) {
-  .popup__form {
-    width: 200px;
-  }
+  width: 100%;
 }
