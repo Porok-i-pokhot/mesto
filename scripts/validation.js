@@ -41,16 +41,24 @@ function isFormValid(inputs) {
   });
 };
 
+function disabledSubmitButton(formElement, settings){
+  const inactiveButton = formElement.querySelector(settings.submitButtonSelector);
+  inactiveButton.disabled = true;
+  inactiveButton.classList.add(settings.inactiveButtonClass);
+}
+
+function enableSubmitButton(formElement, settings){
+  const inactiveButton = formElement.querySelector(settings.submitButtonSelector);
+  inactiveButton.disabled = false;
+  inactiveButton.classList.remove(settings.inactiveButtonClass);
+}
 
 function setSubmitButtonState(inputs, settings, form) {
-  const buttonElement = form.querySelector(settings.submitButtonSelector);
 
   if(isFormValid(inputs)) {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove(settings.inactiveButtonClass);
+    enableSubmitButton(form, settings);
   } else {
-    buttonElement.disabled = true;
-    buttonElement.classList.add(settings.inactiveButtonClass);
+    disabledSubmitButton(form, settings);
   }
 }
 
@@ -79,6 +87,7 @@ function enableValidation(settings) {
 
     formElement.addEventListener('reset', function(){
       hideAllErrors(formElement, settings);
+      disabledSubmitButton(formElement, settings);
     })
   });
 };
