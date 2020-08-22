@@ -1,4 +1,4 @@
-import {imagePopup} from './Utils.js';
+import {imagePopup, openPopup} from './Utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -34,7 +34,7 @@ export default class Card {
     // открытие большого фото по клику на фото в карточке с присвоением данных ссылки и имени
     this._cardImage.addEventListener('click', () => {
     openPopup(imagePopup);
-    handleImageClick(this._data);
+    this._handleImageClick(this._data);
   })
   }
 

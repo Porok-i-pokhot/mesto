@@ -21,10 +21,10 @@ function handleEsc(data){
 }
 
 //открытие попапа
-// function openPopup(data) {
-//   handleEsc(data);
-//   data.classList.add('popup_opened');
-// }
+function openPopup(data) {
+  handleEsc(data);
+  data.classList.add('popup_opened');
+}
 
 //закрытие попапа
 function closePopup(data) {
@@ -32,4 +32,4 @@ function closePopup(data) {
   document.removeEventListener('keydown', handler);
 }
 
-export {imagePopup, handleEsc, closePopup};
+export {imagePopup, handler, handleEsc, openPopup, closePopup};

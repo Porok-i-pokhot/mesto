@@ -1,8 +1,8 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
-import {imagePopup, handleEsc, closePopup} from './Utils.js';
+import {imagePopup, openPopup, closePopup} from './Utils.js';
 
-const editProfilePopup = document.querySelector('.popup_edit-profile');  //попап редактрирования
+const editProfilePopup = document.querySelector('.popup_edit-profile');  //попап редактирования
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
 const popupList = document.querySelectorAll('.popup'); //все попапы
 
@@ -100,10 +100,10 @@ function resetInputValue(data) {
 // }
 
 //открытие попапа
-function openPopup(data) {
-  handleEsc(data);
-  data.classList.add('popup_opened');
-}
+// function openPopup(data) {
+//   handleEsc(data);
+//   data.classList.add('popup_opened');
+// }
 
 //закрытие попапа
 // function closePopup(data) {
