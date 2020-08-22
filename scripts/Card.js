@@ -6,11 +6,9 @@ export default class Card {
     this._cardSelector = cardSelector;
   }
 
-  // присвоение попапу с картинкой ссылки, имени и подписи
   _handleImageClick() {
-
-    this._imagePopupDataImg = imagePopup.querySelector('.popup__image'); //картинка внутри попапа открытия картинки
-    this._imagePopupTitle = imagePopup.querySelector('.popup__title-img'); //заголовок внутри попапа открытия картинки
+    this._imagePopupDataImg = imagePopup.querySelector('.popup__image');
+    this._imagePopupTitle = imagePopup.querySelector('.popup__title-img');
     this._imagePopupDataImg.src = this._data.link;
     this._imagePopupDataImg.alt = this._data.name;
     this._imagePopupTitle.textContent = this._data.name;
@@ -18,20 +16,17 @@ export default class Card {
 
 
   _clickHandlers() {
-    this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
+    this._cardLike = this._cardElement.querySelector('.element__like');
 
-    //добавление темного фона "сердцу" по клику на него
     this._cardLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   })
-  this._cardDelete = this._cardElement.querySelector('.element__delete'); //"мусорная корзина" в карточке
+  this._cardDelete = this._cardElement.querySelector('.element__delete');
 
-    // удаление карточки
     this._cardDelete.addEventListener('click', (evt) => {
     evt.target.closest('.element').remove();
   })
 
-    // открытие большого фото по клику на фото в карточке с присвоением данных ссылки и имени
     this._cardImage.addEventListener('click', () => {
     openPopup(imagePopup);
     this._handleImageClick(this._data);
@@ -39,12 +34,12 @@ export default class Card {
   }
 
   createCard () {
-    this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element'); //темплейт-элемент карточек
-    this._cardElement = this._cardTemplate.cloneNode(true); //копия элемента с содержимым
-    this._cardImage = this._cardElement.querySelector('.element__image'); // картинка в карточке
-    this._cardTitle = this._cardElement.querySelector('.element__title'); //заголовок в карточке
-    this._cardTitle.textContent = this._data.name; //присвоение заголовка карточке
-    this._cardImage.style.backgroundImage = `url(${this._data.link})`; //присвоение фона по ссылке
+    this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element');
+    this._cardElement = this._cardTemplate.cloneNode(true);
+    this._cardImage = this._cardElement.querySelector('.element__image');
+    this._cardTitle = this._cardElement.querySelector('.element__title');
+    this._cardTitle.textContent = this._data.name;
+    this._cardImage.style.backgroundImage = `url(${this._data.link})`; 
 
     this._clickHandlers();
     return this._cardElement;
