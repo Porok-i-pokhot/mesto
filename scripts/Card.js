@@ -17,17 +17,14 @@ export default class Card {
   };
 
 
-  // поиск данных для карточки
-  _attachDataInCard () {
-    this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
-    this._cardDelete = this._cardElement.querySelector('.element__delete'); //"мусорная корзина" в карточке
-  }
-
   _clickHandlers() {
+    this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
+
     //добавление темного фона "сердцу" по клику на него
     this._cardLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   })
+  this._cardDelete = this._cardElement.querySelector('.element__delete'); //"мусорная корзина" в карточке
 
     // удаление карточки
     this._cardDelete.addEventListener('click', (evt) => {
@@ -41,7 +38,6 @@ export default class Card {
   })
   }
 
-
   createCard () {
     this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element'); //темплейт-элемент карточек
     this._cardElement = this._cardTemplate.cloneNode(true); //копия элемента с содержимым
@@ -50,6 +46,7 @@ export default class Card {
     this._cardTitle.textContent = this._data.name; //присвоение заголовка карточке
     this._cardImage.style.backgroundImage = `url(${this._data.link})`; //присвоение фона по ссылке
 
+    this._clickHandlers();
     return this._cardElement;
   }
 }
