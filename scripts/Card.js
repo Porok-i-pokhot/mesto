@@ -1,4 +1,4 @@
-import {imagePopup, openPopup} from './Utils.js';
+import {imagePopup, openPopup} from './utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -15,22 +15,28 @@ export default class Card {
   };
 
 
-  _clickHandlers() {
+  _clickHandlerOpenPopup() {
+    this._cardImage.addEventListener('click', () => {
+      openPopup(imagePopup);
+      this._handleImageClick(this._data);
+    })
+  }
+
+  _clickHandlerCardLike() {
     this._cardLike = this._cardElement.querySelector('.element__like');
 
-    this._cardLike.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__like_active');
-  })
-  this._cardDelete = this._cardElement.querySelector('.element__delete');
+    this._cardLike.addEventListener('click', () => {
+      this._cardLike.classList.toggle('element__like_active');
+    })
+  }
+
+  _clickHandlerCardDelete() {
+    this._cardDelete = this._cardElement.querySelector('.element__delete');
 
     this._cardDelete.addEventListener('click', (evt) => {
-    evt.target.closest('.element').remove();
-  })
-
-    this._cardImage.addEventListener('click', () => {
-    openPopup(imagePopup);
-    this._handleImageClick(this._data);
-  })
+      this._cardElement.remove();
+      this._cardElement = null;
+    })
   }
 
   createCard () {
@@ -39,9 +45,11 @@ export default class Card {
     this._cardImage = this._cardElement.querySelector('.element__image');
     this._cardTitle = this._cardElement.querySelector('.element__title');
     this._cardTitle.textContent = this._data.name;
-    this._cardImage.style.backgroundImage = `url(${this._data.link})`; 
+    this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
-    this._clickHandlers();
+    this._clickHandlerCardLike();
+    this._clickHandlerCardDelete();
+    this._clickHandlerOpenPopup();
     return this._cardElement;
   }
 }
