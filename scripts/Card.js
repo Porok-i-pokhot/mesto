@@ -1,4 +1,4 @@
-import {imagePopup, openPopup} from './utils.js';
+import {imagePopup, openPopup} from './util.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -14,29 +14,37 @@ export default class Card {
     this._imagePopupTitle.textContent = this._data.name;
   };
 
+  _handlerOpenPopup() {
+    openPopup(imagePopup);
+    this._handleImageClick(this._data);
+  }
 
-  _clickHandlerOpenPopup() {
+  _handlerCardLike() {
+    this._cardElement.querySelector('.element__like')
+    .classList.toggle('element__like_active');
+  }
+
+  _handlerCardDelete() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
+  _setEventListeners() {
+
+    this._cardElement.querySelector('.element__like')
+    .addEventListener('click', () => {
+      this._handlerCardLike();
+    })
+
+    this._cardElement.querySelector('.element__delete')
+    .addEventListener('click', () => {
+      this._handlerCardDelete();
+    })
+
     this._cardImage.addEventListener('click', () => {
-      openPopup(imagePopup);
-      this._handleImageClick(this._data);
+      this._handlerOpenPopup();
     })
-  }
 
-  _clickHandlerCardLike() {
-    this._cardLike = this._cardElement.querySelector('.element__like');
-
-    this._cardLike.addEventListener('click', () => {
-      this._cardLike.classList.toggle('element__like_active');
-    })
-  }
-
-  _clickHandlerCardDelete() {
-    this._cardDelete = this._cardElement.querySelector('.element__delete');
-
-    this._cardDelete.addEventListener('click', (evt) => {
-      this._cardElement.remove();
-      this._cardElement = null;
-    })
   }
 
   createCard () {
@@ -47,9 +55,7 @@ export default class Card {
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
-    this._clickHandlerCardLike();
-    this._clickHandlerCardDelete();
-    this._clickHandlerOpenPopup();
+    this._setEventListeners();
     return this._cardElement;
   }
 }
