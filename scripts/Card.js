@@ -1,4 +1,4 @@
-import {imagePopup, openPopup} from './util.js';
+import {imagePopup, openPopup} from './utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -20,8 +20,7 @@ export default class Card {
   }
 
   _handlerCardLike() {
-    this._cardElement.querySelector('.element__like')
-    .classList.toggle('element__like_active');
+    this._cardLike.classList.toggle('element__like_active');
   }
 
   _handlerCardDelete() {
@@ -31,13 +30,11 @@ export default class Card {
 
   _setEventListeners() {
 
-    this._cardElement.querySelector('.element__like')
-    .addEventListener('click', () => {
+    this._cardLike.addEventListener('click', () => {
       this._handlerCardLike();
     })
 
-    this._cardElement.querySelector('.element__delete')
-    .addEventListener('click', () => {
+    this._CardDelete.addEventListener('click', () => {
       this._handlerCardDelete();
     })
 
@@ -47,11 +44,18 @@ export default class Card {
 
   }
 
-  createCard () {
+  _itemsSearch() {
     this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element');
     this._cardElement = this._cardTemplate.cloneNode(true);
     this._cardImage = this._cardElement.querySelector('.element__image');
     this._cardTitle = this._cardElement.querySelector('.element__title');
+
+    this._cardLike = this._cardElement.querySelector('.element__like');
+    this._CardDelete = this._cardElement.querySelector('.element__delete')
+  }
+
+  createCard () {
+    this._itemsSearch();
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 

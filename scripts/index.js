@@ -1,6 +1,6 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
-import {imagePopup, openPopup, closePopup} from './util.js';
+import {imagePopup, openPopup, closePopup} from './utils.js';
 
 const editProfilePopup = document.querySelector('.popup_edit-profile');
 const addCardPopup = document.querySelector('.popup_add-card');
