@@ -102,7 +102,7 @@ function formSubmitHandler(evt) {
 function cardSubmitHandler(evt) {
   evt.preventDefault();
 
-  renderCard({name: placeNameInput.value, link: linkInput.value})
+  cardList.renderer({name: placeNameInput.value, link: linkInput.value});
 
   closePopup(addCardPopup);
 }
