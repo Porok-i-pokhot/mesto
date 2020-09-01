@@ -6,28 +6,33 @@ export default class Card {
     this._cardSelector = cardSelector;
   }
 
+  //присвоение попапу с картинкой ссылки, имени и подписи
   _handleImageClick() {
-    this._imagePopupDataImg = imagePopup.querySelector('.popup__image');
-    this._imagePopupTitle = imagePopup.querySelector('.popup__title-img');
+    this._imagePopupDataImg = imagePopup.querySelector('.popup__image'); //картинка внутри попапа открытия картинки
+    this._imagePopupTitle = imagePopup.querySelector('.popup__title-img'); //заговолок внутри попапа открытия картинки
     this._imagePopupDataImg.src = this._data.link;
     this._imagePopupDataImg.alt = this._data.name;
     this._imagePopupTitle.textContent = this._data.name;
   };
 
+  //открытие попапа с картинкой
   _handlerOpenPopup() {
     openPopup(imagePopup);
     this._handleImageClick(this._data);
   }
 
+  //добавление тёмного фона сердцу по клику на него
   _handlerCardLike() {
     this._cardLike.classList.toggle('element__like_active');
   }
 
+  //удаление карточки
   _handlerCardDelete() {
     this._cardElement.remove();
     this._cardElement = null;
   }
 
+  //слушатели лайка, удаления карточки и открытия попапа с картинкой
   _setEventListeners() {
 
     this._cardLike.addEventListener('click', () => {
@@ -44,16 +49,18 @@ export default class Card {
 
   }
 
+  //поиск элементов карточки
   _itemsSearch() {
     this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element');
     this._cardElement = this._cardTemplate.cloneNode(true);
-    this._cardImage = this._cardElement.querySelector('.element__image');
-    this._cardTitle = this._cardElement.querySelector('.element__title');
+    this._cardImage = this._cardElement.querySelector('.element__image'); //картинка
+    this._cardTitle = this._cardElement.querySelector('.element__title'); //заголовок
 
-    this._cardLike = this._cardElement.querySelector('.element__like');
-    this._CardDelete = this._cardElement.querySelector('.element__delete')
+    this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
+    this._CardDelete = this._cardElement.querySelector('.element__delete') //мусорная корзина в карточке
   }
 
+  //создание карточки
   createCard () {
     this._itemsSearch();
     this._cardTitle.textContent = this._data.name;
