@@ -26,7 +26,6 @@ export default class Popup {
 
 // закрытие попапа по Esc
   _handleEscClose() {
-
     document.addEventListener('keydown', this.handler);
   }
 

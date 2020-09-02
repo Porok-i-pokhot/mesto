@@ -1,4 +1,4 @@
-import {imagePopup, openPopup} from './utils.js';
+// import {imagePopup, openPopup} from './utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -7,13 +7,13 @@ export default class Card {
   }
 
   //присвоение попапу с картинкой ссылки, имени и подписи
-  _handleImageClick() {
-    this._imagePopupDataImg = imagePopup.querySelector('.popup__image'); //картинка внутри попапа открытия картинки
-    this._imagePopupTitle = imagePopup.querySelector('.popup__title-img'); //заговолок внутри попапа открытия картинки
-    this._imagePopupDataImg.src = this._data.link;
-    this._imagePopupDataImg.alt = this._data.name;
-    this._imagePopupTitle.textContent = this._data.name;
-  };
+  // _handleImageClick() {
+  //   this._imagePopupDataImg = imagePopup.querySelector('.popup__image'); //картинка внутри попапа открытия картинки
+  //   this._imagePopupTitle = imagePopup.querySelector('.popup__title-img'); //заговолок внутри попапа открытия картинки
+  //   this._imagePopupDataImg.src = this._data.link;
+  //   this._imagePopupDataImg.alt = this._data.name;
+  //   this._imagePopupTitle.textContent = this._data.name;
+  // };
 
   //открытие попапа с картинкой
   _handlerOpenPopup() {
