@@ -1,19 +1,21 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
-import {imagePopup, openPopup, closePopup} from './utils.js';
+// import {imagePopup, openPopup, closePopup} from './utils.js';
 import Section from './Section.js';
 
-const editProfilePopup = document.querySelector('.popup_edit-profile');
-const addCardPopup = document.querySelector('.popup_add-card');
+const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
+const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
+const imagePopup = document.querySelector('.popup_show-image'); //попап открытия картинки
+
 const popupList = document.querySelectorAll('.popup');
 
 const openEditProfile = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
 
 
-const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
-const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
-const closeImageButton = imagePopup.querySelector('.popup__close-icon');
+// const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
+// const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
+// const closeImageButton = imagePopup.querySelector('.popup__close-icon');
 const editProfileForm = editProfilePopup.querySelector('.popup__form');
 const addCardForm = addCardPopup.querySelector('.popup__form');
 
@@ -27,6 +29,8 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
+
+
 
 const cards = document.querySelector('.elements');
 
@@ -107,11 +111,6 @@ function cardSubmitHandler(evt) {
   closePopup(addCardPopup);
 }
 
-//добавление карточки в начало
-// function renderCard(data) {
-//   const card = new Card(data, '.elements__template');
-//   cards.prepend(card.createCard());
-// }
 
 const cardList = new Section({
   items: initialCards,
@@ -125,10 +124,6 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-//перебор массива с карточками
-// initialCards.forEach((data) => {
-//   renderCard(data);
-// })
 
 //работа кнопки "сохранить"
 editProfileForm.addEventListener('submit', formSubmitHandler);
@@ -141,9 +136,9 @@ openEditProfile.addEventListener('click', () => {
 });
 
 //закрытие попапа редактирования профайла
-closeProfileButton.addEventListener('click', () => {
-  closePopup(editProfilePopup);
-});
+// closeProfileButton.addEventListener('click', () => {
+//   closePopup(editProfilePopup);
+// });
 
 //открытие попапа добавления карточки
 openAddCard.addEventListener('click', () => {
@@ -152,14 +147,14 @@ openAddCard.addEventListener('click', () => {
 });
 
 //закрытие попапа добавления карточки
-closeCardButton.addEventListener('click', () => {
-  closePopup(addCardPopup);
-});
+// closeCardButton.addEventListener('click', () => {
+//   closePopup(addCardPopup);
+// });
 
 //закрытие попапа просмотра картинки
-closeImageButton.addEventListener('click', () => {
-  closePopup(imagePopup);
-});
+// closeImageButton.addEventListener('click', () => {
+//   closePopup(imagePopup);
+// });
 
 
 popupList.forEach(function(popup){
