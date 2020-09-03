@@ -16,8 +16,8 @@ const openAddCard = document.querySelector('.profile__add-button');
 // const closeProfileButton = editProfilePopup.querySelector('.popup__close-icon');
 // const closeCardButton = addCardPopup.querySelector('.popup__close-icon');
 // const closeImageButton = imagePopup.querySelector('.popup__close-icon');
-const editProfileForm = editProfilePopup.querySelector('.popup__form');
-const addCardForm = addCardPopup.querySelector('.popup__form');
+// const editProfileForm = editProfilePopup.querySelector('.popup__form');
+// const addCardForm = addCardPopup.querySelector('.popup__form');
 
 
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -87,9 +87,9 @@ function assignInputValue(data) {
 }
 
 //сброс полей формы до исходных значений
-function resetInputValue(data) {
-  data.querySelector('form').reset()
-}
+// function resetInputValue(data) {
+//   data.querySelector('form').reset()
+// }
 
 //присвоение значений инпутов тексту на странице
 function formSubmitHandler(evt) {
@@ -126,8 +126,8 @@ cardList.renderItems();
 
 
 //работа кнопки "сохранить"
-editProfileForm.addEventListener('submit', formSubmitHandler);
-addCardForm.addEventListener('submit', cardSubmitHandler);
+// editProfileForm.addEventListener('submit', formSubmitHandler);
+// addCardForm.addEventListener('submit', cardSubmitHandler);
 
 //открытие попапа редактирования профайла
 openEditProfile.addEventListener('click', () => {
@@ -143,7 +143,7 @@ openEditProfile.addEventListener('click', () => {
 //открытие попапа добавления карточки
 openAddCard.addEventListener('click', () => {
   openPopup(addCardPopup);
-  resetInputValue(addCardPopup);
+  // resetInputValue(addCardPopup);
 });
 
 //закрытие попапа добавления карточки
