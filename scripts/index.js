@@ -79,12 +79,12 @@ editFormValidator.enableValidation();
 addCardFormValidator.enableValidation()
 
 //проверка наличия класса popup_opened и присвоение инпутам значений из текста
-function assignInputValue(data) {
-  if(data.classList.contains('popup_opened')) {
-    nameInput.value = profileName.textContent
-    occupationInput.value = profileOccupation.textContent
-  };
-}
+// function assignInputValue(data) {
+//   if(data.classList.contains('popup_opened')) {
+//     nameInput.value = profileName.textContent
+//     occupationInput.value = profileOccupation.textContent
+//   };
+// }
 
 //сброс полей формы до исходных значений
 // function resetInputValue(data) {
@@ -95,8 +95,8 @@ function assignInputValue(data) {
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  profileName.textContent = nameInput.value
-  profileOccupation.textContent = occupationInput.value
+  // profileName.textContent = nameInput.value
+  // profileOccupation.textContent = occupationInput.value
 
   closePopup(editProfilePopup);
 }
