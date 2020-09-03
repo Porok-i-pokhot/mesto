@@ -1,9 +1,9 @@
 // import {imagePopup, openPopup} from './utils.js';
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._data = data;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   //присвоение попапу с картинкой ссылки, имени и подписи
@@ -16,10 +16,10 @@ export default class Card {
   // };
 
   //открытие попапа с картинкой
-  _handlerOpenPopup() {
-    openPopup(imagePopup);
-    this._handleImageClick(this._data);
-  }
+  // _handlerOpenPopup() {
+  //   openPopup(imagePopup);
+  //   this._handleImageClick(this._data);
+  // }
 
   //добавление тёмного фона сердцу по клику на него
   _handlerCardLike() {
@@ -44,7 +44,7 @@ export default class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      this._handlerOpenPopup();
+      this._handleCardClick();
     })
 
   }

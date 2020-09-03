@@ -6,7 +6,6 @@ export default class UserInfo{
 
   getUserInfo({dataNameInput, dataOccupationInput}) {
     return {
-
       name: dataNameInput.value = this._userName.textContent,
       info: dataOccupationInput.value = this._userInfo.textContent
     }

@@ -2,10 +2,13 @@ import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 // import {imagePopup, openPopup, closePopup} from './utils.js';
 import Section from './Section.js';
+import PopupWithImage from './PopupWithImage.js';
+import UserInfo from './UserInfo.js';
+import PopupWithForm from './PopupWithForm.js';
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
-const imagePopup = document.querySelector('.popup_show-image'); //попап открытия картинки
+// const imagePopup = document.querySelector('.popup_show-image'); //попап открытия картинки
 
 const popupList = document.querySelectorAll('.popup');
 
@@ -93,7 +96,7 @@ addCardFormValidator.enableValidation()
 
 //присвоение значений инпутов тексту на странице
 function formSubmitHandler(evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
 
   // profileName.textContent = nameInput.value
   // profileOccupation.textContent = occupationInput.value
@@ -115,7 +118,7 @@ function cardSubmitHandler(evt) {
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.elements__template');
+    const card = new Card(cardItem, '.elements__template', handleCardClick);
     cardList.addItem(card.createCard());
   }
 },
@@ -125,6 +128,15 @@ const cardList = new Section({
 cardList.renderItems();
 
 
+const popupWithImage = new PopupWithImage('.popup_show-image', cardItem);
+const handleCardClick = () => {
+  popupWithImage.open();
+}
+
+popupWithImage.setEventListeners();
+
+const userInfo = new UserInfo({profileName, profileOccupation});
+
 //работа кнопки "сохранить"
 // editProfileForm.addEventListener('submit', formSubmitHandler);
 // addCardForm.addEventListener('submit', cardSubmitHandler);
@@ -132,8 +144,34 @@ cardList.renderItems();
 //открытие попапа редактирования профайла
 openEditProfile.addEventListener('click', () => {
   openPopup(editProfilePopup);
-  assignInputValue(editProfilePopup);
+  // assignInputValue(editProfilePopup);
+  userInfo.getUserInfo({nameInput, occupationInput})
 });
+
+const editProfileForm = new PopupWithForm({
+  popupSelector: '.popup_edit-profile',
+  callbackFormSubmit: callbackEditForm
+})
+
+const callbackEditForm = (evt) => {
+  evt.preventDefault();
+  editProfileForm.close();
+  UserInfo.setUserInfo({nameInput, occupationInput})
+}
+
+editProfileForm.setEventListeners();
+
+const addCardForm = new PopupWithForm({
+  popupSelector: '.popup_add-card',
+  callbackFormSubmit: callbackAddCard
+})
+
+const callbackAddCard = (evt) => {
+  evt.preventDefault();
+  editProfileForm.close();
+}
+
+addCardForm.setEventListeners();
 
 //закрытие попапа редактирования профайла
 // closeProfileButton.addEventListener('click', () => {
@@ -157,6 +195,7 @@ openAddCard.addEventListener('click', () => {
 // });
 
 
+//закрытие попапа по клику в любую часть экрана
 popupList.forEach(function(popup){
   popup.addEventListener('click', (evt) => {
     const isPopup = evt.target.classList.contains('popup');
