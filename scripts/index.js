@@ -79,7 +79,7 @@ const editFormValidator = new FormValidator(validationSettings, editProfilePopup
 const addCardFormValidator = new FormValidator(validationSettings, addCardPopup);
 
 editFormValidator.enableValidation();
-addCardFormValidator.enableValidation()
+addCardFormValidator.enableValidation();
 
 //проверка наличия класса popup_opened и присвоение инпутам значений из текста
 // function assignInputValue(data) {
