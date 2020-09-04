@@ -6,21 +6,6 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  //присвоение попапу с картинкой ссылки, имени и подписи
-  // _handleImageClick() {
-  //   this._imagePopupDataImg = imagePopup.querySelector('.popup__image'); //картинка внутри попапа открытия картинки
-  //   this._imagePopupTitle = imagePopup.querySelector('.popup__title-img'); //заговолок внутри попапа открытия картинки
-  //   this._imagePopupDataImg.src = this._data.link;
-  //   this._imagePopupDataImg.alt = this._data.name;
-  //   this._imagePopupTitle.textContent = this._data.name;
-  // };
-
-  //открытие попапа с картинкой
-  // _handlerOpenPopup() {
-  //   openPopup(imagePopup);
-  //   this._handleImageClick(this._data);
-  // }
-
   //добавление тёмного фона сердцу по клику на него
   _handlerCardLike() {
     this._cardLike.classList.toggle('element__like_active');

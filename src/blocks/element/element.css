@@ -1,0 +1,17 @@
+@import url(__info/element__info.css);
+@import url(__title/element__title.css);
+@import url(__like/element__like.css);
+@import url(__image/element__image.css);
+@import url(__like/_active/element__like_active.css);
+@import url(__delete/element__delete.css);
+
+.element {
+  background-color: #ffffff;
+  overflow: hidden;
+  color: #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+  position: relative;
+}
