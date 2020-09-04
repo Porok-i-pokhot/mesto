@@ -204,11 +204,11 @@ openAddCard.addEventListener('click', () => {
 
 
 //закрытие попапа по клику в любую часть экрана
-popupList.forEach(function(popup){
-  popup.addEventListener('click', (evt) => {
-    const isPopup = evt.target.classList.contains('popup');
-    if(isPopup) {
-      closePopup(popup);
-    }
-  });
-})
+// popupList.forEach(function(popup){
+//   popup.addEventListener('click', (evt) => {
+//     const isPopup = evt.target.classList.contains('popup');
+//     if(isPopup) {
+//       closePopup(popup);
+//     }
+//   });
+// })

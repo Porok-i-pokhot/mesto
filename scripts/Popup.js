@@ -7,6 +7,14 @@ export default class Popup {
         this.close();
       };
     };
+
+
+    this._popup.addEventListener('click', (evt) => {
+      const isPopup = evt.target.classList.contains('popup');
+      if(isPopup) {
+        this.close();
+      }
+    });
   }
 
 
