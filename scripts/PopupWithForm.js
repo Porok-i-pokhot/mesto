@@ -7,15 +7,17 @@ export default class PopupWithForm extends Popup{
   }
 
   _getInputValues() {
-    const inputList = Array.from(popupSelector.querySelectorAll('.popup__input'));
+    const inputList = Array.from(this._popup.querySelectorAll('.popup__input'));
     const inputsValues =  inputList.map(input => input.value);
 
     return inputsValues;
   }
 
   setEventListeners() {
-    popupSelector.querySelector('.popup__form')
-    .addEventListener('submit', () => {
+    this._popup.querySelector('.popup__form')
+    .addEventListener('submit', (evt) => {
+      evt.preventDefault();
+
       this.callbackFormSubmit(this._getInputValues);
     });
 
@@ -23,7 +25,7 @@ export default class PopupWithForm extends Popup{
   }
 
   close() {
-    popupSelector.querySelector('form').reset()
+    this._popup.querySelector('form').reset()
 
     super.close();
   }

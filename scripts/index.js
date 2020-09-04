@@ -95,25 +95,29 @@ addCardFormValidator.enableValidation()
 // }
 
 //присвоение значений инпутов тексту на странице
-function formSubmitHandler(evt) {
-  // evt.preventDefault();
+// function formSubmitHandler(evt) {
+//   // evt.preventDefault();
 
-  // profileName.textContent = nameInput.value
-  // profileOccupation.textContent = occupationInput.value
+//   // profileName.textContent = nameInput.value
+//   // profileOccupation.textContent = occupationInput.value
 
-  closePopup(editProfilePopup);
-}
+//   // closePopup(editProfilePopup);
+// }
 
 
 //создание новой карточки
-function cardSubmitHandler(evt) {
-  evt.preventDefault();
+// function cardSubmitHandler(evt) {
+//   evt.preventDefault();
 
-  cardList.renderer({name: placeNameInput.value, link: linkInput.value});
+//   cardList.renderer({name: placeNameInput.value, link: linkInput.value});
 
-  closePopup(addCardPopup);
+//   closePopup(addCardPopup);
+// }
+
+const popupWithImage = new PopupWithImage('.popup_show-image');
+const handleCardClick = (link, name) => {
+  popupWithImage.open(link, name);
 }
-
 
 const cardList = new Section({
   items: initialCards,
@@ -128,14 +132,14 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-const popupWithImage = new PopupWithImage('.popup_show-image', cardItem);
-const handleCardClick = () => {
-  popupWithImage.open();
-}
+
 
 popupWithImage.setEventListeners();
 
-const userInfo = new UserInfo({profileName, profileOccupation});
+const userInfo = new UserInfo({
+  userName: profileName,
+  userInfo: profileOccupation
+});
 
 //работа кнопки "сохранить"
 // editProfileForm.addEventListener('submit', formSubmitHandler);
@@ -143,33 +147,36 @@ const userInfo = new UserInfo({profileName, profileOccupation});
 
 //открытие попапа редактирования профайла
 openEditProfile.addEventListener('click', () => {
-  openPopup(editProfilePopup);
+  // openPopup(editProfilePopup);
+  editProfileForm.open();
   // assignInputValue(editProfilePopup);
-  userInfo.getUserInfo({nameInput, occupationInput})
+  userInfo.getUserInfo(nameInput, occupationInput)
 });
+
+const callbackEditForm = () => {
+  userInfo.setUserInfo(nameInput, occupationInput);
+  editProfileForm.close();
+}
 
 const editProfileForm = new PopupWithForm({
   popupSelector: '.popup_edit-profile',
   callbackFormSubmit: callbackEditForm
 })
 
-const callbackEditForm = (evt) => {
-  evt.preventDefault();
-  editProfileForm.close();
-  UserInfo.setUserInfo({nameInput, occupationInput})
-}
-
 editProfileForm.setEventListeners();
+
+
+const callbackAddCard = () => {
+  cardList.renderer({name: placeNameInput.value, link: linkInput.value});
+  addCardForm.close();
+}
 
 const addCardForm = new PopupWithForm({
   popupSelector: '.popup_add-card',
   callbackFormSubmit: callbackAddCard
 })
 
-const callbackAddCard = (evt) => {
-  evt.preventDefault();
-  editProfileForm.close();
-}
+
 
 addCardForm.setEventListeners();
 
@@ -180,7 +187,8 @@ addCardForm.setEventListeners();
 
 //открытие попапа добавления карточки
 openAddCard.addEventListener('click', () => {
-  openPopup(addCardPopup);
+  // openPopup(addCardPopup);
+  addCardForm.open();
   // resetInputValue(addCardPopup);
 });
 

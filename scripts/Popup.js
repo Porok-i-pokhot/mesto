@@ -1,7 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
-
+    this._popup = document.querySelector(popupSelector);
+    this._closeIcon = this._popup.querySelector('.popup__close-icon');
     this.handler = (evt) => {
       if(evt.key === "Escape") {
         this.close();
@@ -12,14 +12,14 @@ export default class Popup {
 
 //открытие попапов и добавление слушателя по нажатию на Esc
   open() {
-    this._handleEscClose(this._popupSelector);
-    this._popupSelector.classList.add('popup_opened');
+    this._handleEscClose(this._popup);
+    this._popup.classList.add('popup_opened');
   }
 
 
 //закрытие попапов
   close() {
-    this._popupSelector.classList.remove('popup_opened');
+    this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this.handler);
   }
 
@@ -31,10 +31,8 @@ export default class Popup {
 
   //слушатель клика по крестику
   setEventListeners() {
-    this._popupSelector.
-    querySelector('.popup__close-icon')
-    .addEventListener('click', () => {
-      close(this._popupSelector);
+    this._closeIcon.addEventListener('click', () => {
+      this.close(this._popup);
     });
   }
 
