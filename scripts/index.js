@@ -115,9 +115,9 @@ addCardFormValidator.enableValidation();
 // }
 
 const popupWithImage = new PopupWithImage('.popup_show-image');
-const handleCardClick = () => {
-  popupWithImage.open();
-}
+const handleCardClick = (imageSrc, name) => {
+  popupWithImage.open(imageSrc, name);
+};
 
 const cardList = new Section({
   items: initialCards,
