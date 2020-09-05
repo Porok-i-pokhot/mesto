@@ -1,5 +1,5 @@
 .element__image {
-  background-image: url();
+  background-image: url(#);
   width: 282px;
   height: 282px;
   background-size: cover;

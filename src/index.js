@@ -1,10 +1,11 @@
-import FormValidator from '../components/FormValidator.js';
-import initialCards from '../data/initialCardsData.js';
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import UserInfo from '../components/UserInfo.js';
-import PopupWithForm from '../components/PopupWithForm.js';
+import FormValidator from './components/FormValidator.js';
+import './pages/index.css';
+import initialCards from './data/initialCardsData.js';
+import Card from './components/Card.js';
+import Section from './components/Section.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import UserInfo from './components/UserInfo.js';
+import PopupWithForm from './components/PopupWithForm.js';
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
