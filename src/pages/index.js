@@ -1,11 +1,13 @@
-import FormValidator from './components/FormValidator.js';
-import './pages/index.css';
-import initialCards from './data/initialCardsData.js';
-import Card from './components/Card.js';
-import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import UserInfo from './components/UserInfo.js';
-import PopupWithForm from './components/PopupWithForm.js';
+import FormValidator from '../components/FormValidator.js';
+import './index.css';
+import initialCards from '../utils/constants.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+
+debugger
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
@@ -13,25 +15,16 @@ const addCardPopup = document.querySelector('.popup_add-card'); //попап д�
 const openEditProfile = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
 
-
 const nameInput = document.querySelector('.popup__input_type_name');
 const occupationInput = document.querySelector('.popup__input_type_occupation');
 
 const placeNameInput = document.querySelector('.popup__input_type_place');
 const linkInput = document.querySelector('.popup__input_type_link');
 
-
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
 
-
-
 const cards = document.querySelector('.elements');
-
-
-
-
-
 
 const validationSettings = {
   formSelector: '.popup__form',

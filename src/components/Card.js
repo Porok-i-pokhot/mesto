@@ -4,6 +4,7 @@ export default class Card {
     this._data = data;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._itemsSearch();
   }
 
   //добавление тёмного фона сердцу по клику на него
@@ -47,7 +48,6 @@ export default class Card {
 
   //создание карточки
   createCard () {
-    this._itemsSearch();
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 

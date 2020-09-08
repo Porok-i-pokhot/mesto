@@ -5,9 +5,8 @@ export default class Popup {
     this.handler = (evt) => {
       if(evt.key === "Escape") {
         this.close();
-      };
+      }
     };
-
 
     this._popup.addEventListener('click', (evt) => {
       const isPopup = evt.target.classList.contains('popup');
@@ -17,20 +16,17 @@ export default class Popup {
     });
   }
 
-
 //открытие попапов и добавление слушателя по нажатию на Esc
   open() {
     this._handleEscClose(this._popup);
     this._popup.classList.add('popup_opened');
   }
 
-
 //закрытие попапов
   close() {
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this.handler);
   }
-
 
 // закрытие попапа по Esc
   _handleEscClose() {
