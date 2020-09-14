@@ -1,7 +1,7 @@
 export default class Api {
   constructor({baseUrl, headers}) {
-    this.baseUrl = baseUrl,
-    this.headers = headers
+    this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
   getInitialCards() {
@@ -30,16 +30,13 @@ export default class Api {
       });
   }
 
-  setEditedUserInfo() {
+  setEditedUserInfo(data) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: this.headers,
-        'Content-Type': 'application/json'
-      },
+      headers: this.headers,
       body: JSON.stringify({
-        name: 'Marie Skłodowska Curie',
-        about: 'Physicist and Chemist'
+        name: data.name,
+        about: data.job
       })
     })
       .then((res) => {
@@ -50,5 +47,22 @@ export default class Api {
       });
   }
 
+  addNewCard(data) {
+    // debugger;
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: data.place,
+        link: data.link
+      })
+    })
+      .then((res) => {
+        if(res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
 
 }

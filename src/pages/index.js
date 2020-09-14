@@ -60,37 +60,23 @@ const api = new Api({
 //вызов метода получения данных первоначальных карточек с сервера
 const getInitialCards = api.getInitialCards();
 
+const cardList = new Section({
+    renderer: (cardItem) => {
+      const card = new Card(cardItem, '.elements__template', handleCardClick);
+      cardList.addItem(card.createCard());
+    }
+  },
+  cards
+);
+
+//отрисовка первоначальных карточек на странице
 getInitialCards
   .then((data) => {
-    const cardList = new Section({
-      items: data,
-      renderer: (cardItem) => {
-        const card = new Card(cardItem, '.elements__template', handleCardClick);
-        cardList.addItem(card.createCard());
-      }
-    },
-    cards
-  );
-
-    cardList.renderItems();
+    cardList.renderItems(data);
   })
   .catch((err) => {
     console.log(err + ' , нам жаль');
   });
-
-
-
-// const cardList = new Section({
-//   items: initialCards,
-//   renderer: (cardItem) => {
-//     const card = new Card(cardItem, '.elements__template', handleCardClick);
-//     cardList.addItem(card.createCard());
-//   }
-// },
-//   cards
-// );
-
-// cardList.renderItems();
 
 
 const userInfo = new UserInfo({
@@ -115,26 +101,38 @@ openEditProfile.addEventListener('click', () => {
   userInfo.getUserInfoFromInputs(nameInput, occupationInput)
 });
 
-const callbackEditForm = () => {
-  userInfo.setUserInfoFromInputs(nameInput, occupationInput);
-  editProfileForm.close();
-}
+const callbackEditForm = (data) => {
+    api.setEditedUserInfo(data)
+      .then((updatedData) => {
+        userInfo.setUserInfo(updatedData);
+        editProfileForm.close();
+      })
+      .catch((err) => {
+        console.log(err + ' , нам жаль');
+      });
+};
 
 const editProfileForm = new PopupWithForm({
   popupSelector: '.popup_edit-profile',
-  callbackFormSubmit: callbackEditForm
-})
+  callbackFormSubmit: callbackEditForm,
+});
 
 
-const callbackAddCard = () => {
-  cardList.renderer({name: placeNameInput.value, link: linkInput.value});
+const callbackAddCard = (data) => {
+  api.addNewCard(data)
+    .then((updatedData) => {
+      cardList.renderer(updatedData);
+    })
+    .catch((err) => {
+      console.log(err + ' , нам жаль');
+    });
   addCardForm.close();
-}
+};
 
 const addCardForm = new PopupWithForm({
   popupSelector: '.popup_add-card',
-  callbackFormSubmit: callbackAddCard
-})
+  callbackFormSubmit: callbackAddCard,
+});
 
 
 //открытие попапа добавления карточки

@@ -18,10 +18,10 @@ export default class UserInfo{
       about: dataOccupationInput.value
     };
 
-    this._setUserInfo(data);
+    this.setUserInfo(data);
   }
 
-  _setUserInfo({name, about, avatar}) {
+  setUserInfo({name, about, avatar}) {
     this._userName.textContent = name;
     this._userInfo.textContent = about;
     this._userAvatar.src = avatar;
