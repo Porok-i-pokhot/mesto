@@ -11,7 +11,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
-const changeAvatarPopup = document.querySelector('.popup_edit-avatar'); //попап изменения аватара
+// const changeAvatarPopup = document.querySelector('.popup_edit-avatar'); //попап изменения аватара
 
 const openEditProfile = document.querySelector('.profile__edit-button'); //кнопка открытия попапа редактирования профиля
 const openAddCard = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
@@ -41,11 +41,11 @@ const validationSettings = {
 
 const editFormValidator = new FormValidator(validationSettings, editProfilePopup);
 const addCardFormValidator = new FormValidator(validationSettings, addCardPopup);
-const changeAvatarFormValidator = new FormValidator(validationSettings, changeAvatarPopup);
+// const changeAvatarFormValidator = new FormValidator(validationSettings, changeAvatarPopup);
 
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
-changeAvatarFormValidator.enableValidation();
+// changeAvatarFormValidator.enableValidation();
 
 
 const popupWithImage = new PopupWithImage('.popup_show-image');
