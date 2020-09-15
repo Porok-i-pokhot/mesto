@@ -107,14 +107,19 @@ openEditProfile.addEventListener('click', () => {
 });
 
 const callbackEditForm = (data) => {
-    api.setEditedUserInfo(data)
+  editProfileForm.setLoadingText();
+
+  api.setEditedUserInfo(data)
       .then((updatedData) => {
         userInfo.setUserInfo(updatedData);
         editProfileForm.close();
       })
       .catch((err) => {
         console.log(err + ' , нам жаль');
-      });
+      })
+      .finally(()=>{
+      editProfileForm.setDefaultText();
+    })
 };
 
 const editProfileForm = new PopupWithForm({
@@ -124,13 +129,18 @@ const editProfileForm = new PopupWithForm({
 
 
 const callbackAddCard = (data) => {
+  addCardForm.setLoadingText(); //добавление лоадера
+
   api.addNewCard(data)
     .then((updatedData) => {
       cardList.renderer(updatedData);
     })
     .catch((err) => {
       console.log(err + ' , нам жаль');
-    });
+    })
+    .finally(()=>{
+      addCardForm.setDefaultText(); //удаление лоадера
+    })
   addCardForm.close();
 };
 
@@ -145,6 +155,8 @@ openAddCard.addEventListener('click', () => {
 });
 
 const callbackChangeAvatar = (data) => {
+  changeAvatarForm.setLoadingText();
+
   api.changeAvatar(data)
     .then((updatedData) => {
       userInfo.setAvatar(updatedData.avatar);
@@ -152,7 +164,10 @@ const callbackChangeAvatar = (data) => {
     })
     .catch((err) => {
       console.log(err + ' , нам жаль');
-    });
+    })
+    .finally(()=> {
+      changeAvatarForm.setDefaultText();
+    })
 };
 
 const changeAvatarForm = new PopupWithForm({
