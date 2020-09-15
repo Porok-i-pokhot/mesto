@@ -85,7 +85,7 @@ getInitialCards
 
 const userInfo = new UserInfo({
   userName: profileName,
-  userInfo: profileOccupation,
+  userAbout: profileOccupation,
   userAvatar: profileAvatar
 });
 
@@ -147,7 +147,7 @@ openAddCard.addEventListener('click', () => {
 const callbackChangeAvatar = (data) => {
   api.changeAvatar(data)
     .then((updatedData) => {
-      userInfo.setUserInfo(updatedData);
+      userInfo.setAvatar(updatedData.avatar);
       changeAvatarForm.close();
     })
     .catch((err) => {
