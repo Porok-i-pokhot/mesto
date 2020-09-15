@@ -3,3 +3,7 @@
   position: relative;
   height: 120px;
 }
+
+.profile__avatar-container:hover .profile__edit-avatar-container{
+  display: flex;
+}

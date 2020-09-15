@@ -5,6 +5,4 @@
   object-fit: cover;
 }
 
-.profile__avatar:hover +.profile__edit-avatar-container{
-  display: flex;
-}
+

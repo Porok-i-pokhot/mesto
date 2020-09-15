@@ -36,6 +36,7 @@ export default class Popup {
   //слушатель клика по крестику
   setEventListeners() {
     this._closeIcon.addEventListener('click', () => {
+      debugger;
       this.close(this._popup);
     });
   }

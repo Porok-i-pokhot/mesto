@@ -12,15 +12,6 @@ export default class UserInfo{
     }
   }
 
-  setUserInfoFromInputs(dataNameInput, dataOccupationInput) {
-    const data = {
-      name: dataNameInput.value,
-      about: dataOccupationInput.value
-    };
-
-    this.setUserInfo(data);
-  }
-
   setUserInfo({name, about, avatar}) {
     this._userName.textContent = name;
     this._userInfo.textContent = about;

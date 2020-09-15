@@ -11,15 +11,17 @@ import PopupWithForm from '../components/PopupWithForm.js';
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 const addCardPopup = document.querySelector('.popup_add-card'); //попап добавления карточки
+const changeAvatarPopup = document.querySelector('.popup_edit-avatar'); //попап изменения аватара
 
 const openEditProfile = document.querySelector('.profile__edit-button'); //кнопка открытия попапа редактирования профиля
 const openAddCard = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
+const openChangeAvatar = document.querySelector('.profile__avatar-container'); //контейнер с аватаром внутри
 
 const nameInput = document.querySelector('.popup__input_type_name'); //имя профиля в инпуте
 const occupationInput = document.querySelector('.popup__input_type_occupation'); //род деятельности в инпуте
 
-const placeNameInput = document.querySelector('.popup__input_type_place'); //инпут названия места на карточке
-const linkInput = document.querySelector('.popup__input_type_link'); //инпут ссылки на картинку в карточке
+// const placeNameInput = document.querySelector('.popup__input_type_place'); //инпут названия места на карточке
+// const linkInput = document.querySelector('.popup__input_type_link'); //инпут ссылки на картинку в карточке
 
 const profileName = document.querySelector('.profile__name'); //имя профиля на странице
 const profileOccupation = document.querySelector('.profile__occupation'); //род деятельности на странице
@@ -39,9 +41,11 @@ const validationSettings = {
 
 const editFormValidator = new FormValidator(validationSettings, editProfilePopup);
 const addCardFormValidator = new FormValidator(validationSettings, addCardPopup);
+const changeAvatarFormValidator = new FormValidator(validationSettings, changeAvatarPopup);
 
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
+changeAvatarFormValidator.enableValidation();
 
 
 const popupWithImage = new PopupWithImage('.popup_show-image');
@@ -87,6 +91,7 @@ const userInfo = new UserInfo({
 
 const getUserInfo = api.getUserInfo();
 
+//получение данных пользователя с сервера
 getUserInfo
   .then((data) => {
     userInfo.setUserInfo(data);
@@ -134,12 +139,33 @@ const addCardForm = new PopupWithForm({
   callbackFormSubmit: callbackAddCard,
 });
 
-
 //открытие попапа добавления карточки
 openAddCard.addEventListener('click', () => {
   addCardForm.open();
 });
 
+const callbackChangeAvatar = (data) => {
+  api.changeAvatar(data)
+    .then((updatedData) => {
+      userInfo.setUserInfo(updatedData);
+      changeAvatarForm.close();
+    })
+    .catch((err) => {
+      console.log(err + ' , нам жаль');
+    });
+};
+
+const changeAvatarForm = new PopupWithForm({
+  popupSelector: '.popup_edit-avatar',
+  callbackFormSubmit: callbackChangeAvatar,
+});
+
+//открытие попапа смены аватара
+openChangeAvatar.addEventListener('click', () => {
+  changeAvatarForm.open();
+});
+
+changeAvatarForm.setEventListeners();
 editProfileForm.setEventListeners();
 addCardForm.setEventListeners();
 popupWithImage.setEventListeners();
