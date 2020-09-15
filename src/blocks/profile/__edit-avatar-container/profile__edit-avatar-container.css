@@ -1,0 +1,8 @@
+.profile__edit-avatar-container{
+  position: absolute;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}

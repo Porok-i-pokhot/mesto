@@ -4,3 +4,7 @@
   max-width: 120px;
   object-fit: cover;
 }
+
+.profile__avatar:hover +.profile__edit-avatar-container{
+  display: flex;
+}
