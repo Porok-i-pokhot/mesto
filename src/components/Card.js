@@ -1,14 +1,18 @@
 // import {imagePopup, openPopup} from './utils.js';
 export default class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, {handleCardClick, handlerCardLike, handlerCardDelete}) {
     this._data = data;
     this._cardSelector = cardSelector;
+
     this._handleCardClick = handleCardClick;
+    this._handlerCardLike = handlerCardLike;
+    this._handlerCardDelete = handlerCardDelete;
+
     this._itemsSearch();
   }
 
   //добавление тёмного фона сердцу по клику на него
-  _handlerCardLike() {
+  _toggleCardLike() {
     this._cardLike.classList.toggle('element__like_active');
   }
 
@@ -22,12 +26,12 @@ export default class Card {
   _setEventListeners() {
 
     this._cardLike.addEventListener('click', () => {
-      this._handlerCardLike();
-    })
+      this._handlerCardLike(this._data.id, this._data.likes);
+    });
 
     this._CardDelete.addEventListener('click', () => {
       this._handlerCardDelete();
-    })
+    });
 
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._data.link, this._data.name);
@@ -43,7 +47,9 @@ export default class Card {
     this._cardTitle = this._cardElement.querySelector('.element__title'); //заголовок
 
     this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
-    this._CardDelete = this._cardElement.querySelector('.element__delete') //мусорная корзина в карточке
+    this._CardDelete = this._cardElement.querySelector('.element__delete'); //мусорная корзина в карточке
+
+    this._cardLikeNumber = this._cardElement.querySelector('.element__likes-quantity'); //цифра лайков
   }
 
   //создание карточки
@@ -51,7 +57,13 @@ export default class Card {
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
+    this._cardLikeNumber.textContent = this._data.likes.lenght;
+
     this._setEventListeners();
     return this._cardElement;
+  }
+
+  changeDataLike() {
+    this._toggleCardLike();
   }
 }

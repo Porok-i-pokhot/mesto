@@ -117,6 +117,18 @@
           </div>
         </div>
 
+        <div class="popup popup_confirm-delete">
+          <div class="popup__container">
+            <button class="popup__close-icon defocus" type="button">
+              <img src="images/close-icon.svg" class="popup__close-icon-image" alt="крестик">
+            </button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="popup__form" action="#" name="form" novalidate>
+              <button type="submit" class="popup__form-button">Да</button>
+            </form>
+          </div>
+        </div>
+
     </div>
 
     <template class="elements__template">
@@ -125,7 +137,10 @@
         <div class="element__image"></div>
         <div class="element__info">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like defocus"></button>
+          <div class="element__like-container">
+            <button type="button" class="element__like defocus"></button>
+            <p class="element__likes-quantity"></p>
+          </div>
         </div>
       </div>
     </template>

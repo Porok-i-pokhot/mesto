@@ -7,6 +7,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
 
 const editProfilePopup = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
@@ -49,6 +50,8 @@ addCardFormValidator.enableValidation();
 
 
 const popupWithImage = new PopupWithImage('.popup_show-image');
+
+//открытие попапа просмотра картинки
 const handleCardClick = (imageSrc, name) => {
   popupWithImage.open(imageSrc, name);
 };
@@ -122,6 +125,8 @@ const callbackEditForm = (data) => {
     })
 };
 
+const confirmDeleteForm = new PopupWithConfirmation('.popup_confirm-delete');
+
 const editProfileForm = new PopupWithForm({
   popupSelector: '.popup_edit-profile',
   callbackFormSubmit: callbackEditForm,
@@ -184,5 +189,6 @@ changeAvatarForm.setEventListeners();
 editProfileForm.setEventListeners();
 addCardForm.setEventListeners();
 popupWithImage.setEventListeners();
+confirmDeleteForm.setEventListeners();
 
 
