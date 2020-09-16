@@ -16,12 +16,6 @@ export default class Card {
     this._cardLike.classList.toggle('element__like_active');
   }
 
-  //удаление карточки
-  _handlerCardDelete() {
-    this._cardElement.remove();
-    this._cardElement = null;
-  }
-
   //слушатели лайка, удаления карточки и открытия попапа с картинкой
   _setEventListeners() {
 

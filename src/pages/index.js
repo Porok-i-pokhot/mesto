@@ -56,6 +56,14 @@ const handleCardClick = (imageSrc, name) => {
   popupWithImage.open(imageSrc, name);
 };
 
+const handlerCardDelete = function() {
+  this._cardElement.remove();
+  this._cardElement = null;
+};
+const handlerCardLike = () => {
+
+};
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-15',
   headers: {
@@ -69,7 +77,11 @@ const getInitialCards = api.getInitialCards();
 
 const cardList = new Section({
     renderer: (cardItem) => {
-      const card = new Card(cardItem, '.elements__template', handleCardClick);
+      const card = new Card(cardItem, '.elements__template', {
+        handleCardClick: handleCardClick,
+        handlerCardLike: handlerCardLike,
+        handlerCardDelete: handlerCardDelete
+      });
       cardList.addItem(card.createCard());
     }
   },
