@@ -60,8 +60,22 @@ const handlerCardDelete = function() {
   this._cardElement.remove();
   this._cardElement = null;
 };
-const handlerCardLike = () => {
 
+//добавление тёмного фона сердцу по клику на него
+const handlerCardLike = function () {
+  this.toggleCardLike();
+  if(this.isLiked()){
+    api.putLike(this._data._id)
+      .then((data) => {
+        this.updateData(data);
+        // todo catch
+    })
+  } else {
+    api.deleteLike(this._data._id)
+      .then((data) => {
+        this.updateData(data);
+      })
+  }
 };
 
 const api = new Api({

@@ -11,16 +11,17 @@ export default class Card {
     this._itemsSearch();
   }
 
-  //добавление тёмного фона сердцу по клику на него
-  _toggleCardLike() {
+  //меняет состояние лайка
+  toggleCardLike() {
     this._cardLike.classList.toggle('element__like_active');
   }
+
 
   //слушатели лайка, удаления карточки и открытия попапа с картинкой
   _setEventListeners() {
 
     this._cardLike.addEventListener('click', () => {
-      this._handlerCardLike(this._data.id, this._data.likes);
+      this._handlerCardLike();
     });
 
     this._CardDelete.addEventListener('click', () => {
@@ -51,13 +52,25 @@ export default class Card {
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
-    this._cardLikeNumber.textContent = this._data.likes.lenght;
+    this._renderNumberOfLikes();
 
     this._setEventListeners();
     return this._cardElement;
   }
 
-  changeDataLike() {
-    this._toggleCardLike();
+  //проверяет активен ли лайк
+  isLiked() {
+    return this._cardLike.classList.contains('element__like_active');
   }
+
+  _renderNumberOfLikes() {
+    this._cardLikeNumber.textContent = this._data.likes.length;
+  }
+
+  //меняет количество лайков и меняет данные карточки. которые приходят с сервера
+  updateData(data) {
+    this._data = data;
+    this._renderNumberOfLikes();
+  }
+
 }
