@@ -67,14 +67,19 @@ const handlerCardLike = function () {
   if(this.isLiked()){
     api.putLike(this._data._id)
       .then((data) => {
-        this.updateData(data);
-        // todo catch
+        this.updateData(data)
+      .catch((err) => {
+          console.log(err + ' , нам жаль');
+        });
     })
   } else {
     api.deleteLike(this._data._id)
       .then((data) => {
         this.updateData(data);
       })
+      .catch((err) => {
+        console.log(err + ' , нам жаль');
+      });
   }
 };
 
@@ -96,21 +101,14 @@ const cardList = new Section({
         handlerCardLike: handlerCardLike,
         handlerCardDelete: handlerCardDelete
       });
-      cardList.addItem(card.createCard());
+      const userId = userInfo.getUserId();
+      cardList.addItem(
+        card.createCard(userId)
+      );
     }
   },
   cards
 );
-
-//отрисовка первоначальных карточек на странице
-getInitialCards
-  .then((data) => {
-    cardList.renderItems(data);
-  })
-  .catch((err) => {
-    console.log(err + ' , нам жаль');
-  });
-
 
 const userInfo = new UserInfo({
   userName: profileName,
@@ -118,11 +116,24 @@ const userInfo = new UserInfo({
   userAvatar: profileAvatar
 });
 
-const getUserInfo = api.getUserInfo();
-
-//получение данных пользователя с сервера
-getUserInfo
+//отрисовка первоначальных карточек на странице
+getInitialCards
   .then((data) => {
+    cardList.renderItems(data);
+  })
+  .catch((err) => {
+    console.log(err + ' , нам очень жаль');
+  });
+
+
+
+
+const userInfoPromise = api.getUserInfo();
+
+//получение данных пользователя с сервера и отрисовка на страницу
+userInfoPromise
+  .then((data) => {
+    // debugger;
     userInfo.setUserInfo(data);
   })
   .catch((err) => {

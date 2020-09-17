@@ -1,3 +1,5 @@
+@import url(_show/element__delete_show.css);
+
 .element__delete {
   background-image: url(../../../images/delete-button.svg);
   width: 18px;
@@ -8,6 +10,7 @@
   background-color: transparent;
   padding: 0;
   border: none;
+  /*display: none;*/
 }
 
 .element__delete:hover {

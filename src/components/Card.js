@@ -48,9 +48,14 @@ export default class Card {
   }
 
   //создание карточки
-  createCard () {
+  createCard (currentUserId) {
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
+
+    if(currentUserId === this._data.owner._id) {
+      // console.log('показываем delete', this._data);
+      this._CardDelete.classList.add('element__delete_show');
+    }
 
     this._renderNumberOfLikes();
 
