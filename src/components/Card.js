@@ -16,7 +16,6 @@ export default class Card {
     this._cardLike.classList.toggle('element__like_active');
   }
 
-
   //слушатели лайка, удаления карточки и открытия попапа с картинкой
   _setEventListeners() {
 
@@ -25,7 +24,7 @@ export default class Card {
     });
 
     this._CardDelete.addEventListener('click', () => {
-      this._handlerCardDelete();
+      this._handlerCardDelete(this._data._id);
     });
 
     this._cardImage.addEventListener('click', () => {
@@ -53,7 +52,6 @@ export default class Card {
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
     if(currentUserId !== this._data.owner._id) {
-      // console.log('показываем delete', this._data);
       this._CardDelete.classList.add('element__delete_hide');
     }
 

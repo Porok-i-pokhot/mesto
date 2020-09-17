@@ -57,8 +57,18 @@ const handleCardClick = (imageSrc, name) => {
 };
 
 const handlerCardDelete = function() {
-  this._cardElement.remove();
-  this._cardElement = null;
+  confirmDeleteForm.open();
+  confirmDeleteForm.setCallbackSubmit(() => {
+    api.deleteCard(this._data._id)
+      .then((data) => {
+        this._cardElement.remove(data);
+        this._cardElement = null;
+        confirmDeleteForm.close();
+      })
+      .catch((err) => {
+        console.log(err + ' , нам жаль');
+      });
+  });
 };
 
 //добавление тёмного фона сердцу по клику на него
@@ -162,7 +172,6 @@ const callbackEditForm = (data) => {
     })
 };
 
-const confirmDeleteForm = new PopupWithConfirmation('.popup_confirm-delete');
 
 const editProfileForm = new PopupWithForm({
   popupSelector: '.popup_edit-profile',
@@ -221,6 +230,12 @@ const changeAvatarForm = new PopupWithForm({
 openChangeAvatar.addEventListener('click', () => {
   changeAvatarForm.open();
 });
+
+const confirmDeleteForm = new PopupWithConfirmation('.popup_confirm-delete');
+
+// confirmDeleteForm.addEventListener('click', () => {
+//   confirmDeleteForm.open();
+// })
 
 changeAvatarForm.setEventListeners();
 editProfileForm.setEventListeners();

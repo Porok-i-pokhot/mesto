@@ -107,6 +107,19 @@ export default class Api {
       });
   }
 
+  deleteCard(id) {
+    return fetch(`${this.baseUrl}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
+      .then((res) => {
+        if(res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
+
 
 
 
