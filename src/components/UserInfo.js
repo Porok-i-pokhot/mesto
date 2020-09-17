@@ -18,7 +18,7 @@ export default class UserInfo{
     return this._userId;
   }
 
-  //присвоение данные пользователя на страницу при загрузке
+  //присвоение данных пользователя на страницу при загрузке
   setUserInfo({name, about, avatar, _id}) {
     this._userName.textContent = name;
     this._userAbout.textContent = about;

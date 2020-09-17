@@ -30,6 +30,8 @@ export default class Api {
       });
   }
 
+
+
   setEditedUserInfo(data) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
@@ -119,8 +121,5 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
-
-
-
 
 }
