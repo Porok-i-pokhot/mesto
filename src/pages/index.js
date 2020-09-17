@@ -75,10 +75,10 @@ const handlerCardLike = function () {
     api.putLike(this._data._id)
       .then((data) => {
         this.updateData(data)
-      .catch((err) => {
-          console.log(err + ' , нам жаль');
-        });
     })
+      .catch((err) => {
+        console.log(err + ' , нам жаль');
+      });
   } else {
     api.deleteLike(this._data._id)
       .then((data) => {
