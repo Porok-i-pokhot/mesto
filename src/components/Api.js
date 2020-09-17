@@ -30,8 +30,6 @@ export default class Api {
       });
   }
 
-
-
   setEditedUserInfo(data) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',

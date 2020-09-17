@@ -7,7 +7,6 @@ export default class PopupWithImage extends Popup {
     this._imagePopupTitle = this._popup.querySelector('.popup__title-img'); //заговолок внутри попапа c картинкой
   }
 
-
   open(imageSrc, name) {
 
     this._imagePopupDataImg.src = imageSrc;
