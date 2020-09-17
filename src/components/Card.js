@@ -52,9 +52,9 @@ export default class Card {
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
-    if(currentUserId === this._data.owner._id) {
+    if(currentUserId !== this._data.owner._id) {
       // console.log('показываем delete', this._data);
-      this._CardDelete.classList.add('element__delete_show');
+      this._CardDelete.classList.add('element__delete_hide');
     }
 
     this._renderNumberOfLikes();
