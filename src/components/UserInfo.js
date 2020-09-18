@@ -1,9 +1,9 @@
 export default class UserInfo{
-  constructor ({userName, userAbout, userAvatar, userId}) {
+  constructor ({userName, userAbout, userAvatar}) {
     this._userName = userName;
     this._userAbout = userAbout;
     this._userAvatar = userAvatar;
-    this._userId = userId;
+    // this._userId = userId;
   }
 
   //присвоение инпутам значений из текста
