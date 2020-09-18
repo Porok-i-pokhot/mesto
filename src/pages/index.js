@@ -58,8 +58,7 @@ const handlerCardDelete = function() {
   confirmDeleteForm.setCallbackSubmit(() => {
     api.deleteCard(this._data._id)
       .then((data) => {
-        this._cardElement.remove(data);
-        this._cardElement = null;
+        this.removeCard(data);
         confirmDeleteForm.close();
       })
       .catch((err) => {
@@ -110,8 +109,10 @@ const cardList = new Section({
 
       //получение ID и создание карточки
       const userId = userInfo.getUserId();
+      let isOwnCard = card.isOwner(userId);
       cardList.addItem(
-        card.createCard(userId)
+        card.createCard(isOwnCard),
+        isOwnCard
       );
     }
   },
@@ -124,7 +125,6 @@ const userInfo = new UserInfo({
   userAvatar: profileAvatar
 });
 
-
 //создание Промиса с массивом данных для отрисовки страницы
 const cardsAndUserInfo = Promise.all([api.getInitialCards(), api.getUserInfo()]);
 
@@ -136,13 +136,6 @@ cardsAndUserInfo
   .catch((err) => {
     console.log(err + ' , нам очень жаль');
   });
-
-
-
-
-
-
-
 
 //открытие попапа редактирования профайла
 openEditProfile.addEventListener('click', () => {
@@ -178,6 +171,7 @@ const callbackAddCard = (data) => {
   api.addNewCard(data)
     .then((updatedData) => {
       cardList.renderer(updatedData);
+      addCardForm.close();
     })
     .catch((err) => {
       console.log(err + ' , нам жаль');
@@ -185,7 +179,6 @@ const callbackAddCard = (data) => {
     .finally(()=>{
       addCardForm.setDefaultText(); //удаление лоадера
     })
-  addCardForm.close();
 };
 
 const addCardForm = new PopupWithForm({

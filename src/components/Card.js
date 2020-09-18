@@ -8,7 +8,6 @@ export default class Card {
     this._handlerCardLike = handlerCardLike;
     this._handlerCardDelete = handlerCardDelete;
 
-    this._itemsSearch();
   }
 
   //меняет состояние лайка
@@ -23,7 +22,7 @@ export default class Card {
       this._handlerCardLike();
     });
 
-    this._CardDelete.addEventListener('click', () => {
+    this._cardDelete.addEventListener('click', () => {
       this._handlerCardDelete(this._data._id);
     });
 
@@ -33,26 +32,43 @@ export default class Card {
 
   }
 
-  //поиск элементов карточки
-  _itemsSearch() {
+  _getTemplate() {
+
     this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element');
-    this._cardElement = this._cardTemplate.cloneNode(true);
+    return this._cardTemplate.cloneNode(true);
+  }
+
+  //поиск элементов карточки
+  _initializeTemplateVariables() {
+
     this._cardImage = this._cardElement.querySelector('.element__image'); //картинка
     this._cardTitle = this._cardElement.querySelector('.element__title'); //заголовок
 
     this._cardLike = this._cardElement.querySelector('.element__like'); //сердечко в карточке
-    this._CardDelete = this._cardElement.querySelector('.element__delete'); //мусорная корзина в карточке
+    this._cardDelete = this._cardElement.querySelector('.element__delete'); //мусорная корзина в карточке
 
     this._cardLikeNumber = this._cardElement.querySelector('.element__likes-quantity'); //цифра лайков
   }
 
+  removeCard(data) {
+    this._cardElement.remove(data);
+    this._cardElement = null;
+  }
+
+  isOwner(ownerId) {
+    return ownerId === this._data.owner._id;
+  }
+
   //создание карточки
-  createCard (currentUserId) {
+  createCard (isOwnCard) {
+    this._cardElement = this._getTemplate();
+    this._initializeTemplateVariables();
+
     this._cardTitle.textContent = this._data.name;
     this._cardImage.style.backgroundImage = `url(${this._data.link})`;
 
-    if(currentUserId !== this._data.owner._id) {
-      this._CardDelete.classList.add('element__delete_hide');
+    if(!isOwnCard) {
+      this._cardDelete.classList.add('element__delete_hide');
     }
 
     this._renderNumberOfLikes();

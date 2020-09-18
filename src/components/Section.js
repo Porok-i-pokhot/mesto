@@ -10,7 +10,11 @@ export default class Section{
     })
   }
 
-  addItem(element) {
-    this._containerSelector.prepend(element);
+  addItem(element, isOwner) {
+    if(!isOwner) {
+      this._containerSelector.append(element);
+    } else {
+      this._containerSelector.prepend(element);
+    }
   }
 }
