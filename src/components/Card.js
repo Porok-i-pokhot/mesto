@@ -55,6 +55,7 @@ export default class Card {
     this._cardElement = null;
   }
 
+  //проверка твой ли id
   isOwner(ownerId) {
     return ownerId === this._data.owner._id;
   }
@@ -70,6 +71,12 @@ export default class Card {
     if(!isOwnCard) {
       this._cardDelete.classList.add('element__delete_hide');
     }
+
+    this._data.likes.some((like) => {
+      if(like._id === isOwnCard) {
+        this._cardLike.classList.add('element__like_active');
+      }
+    });
 
     this._renderNumberOfLikes();
 
